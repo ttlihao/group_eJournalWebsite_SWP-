@@ -143,4 +143,5 @@ h4 {
 p {
     font-size: 13px;
     margin: 0;
+    size-adjust: 0;
 }

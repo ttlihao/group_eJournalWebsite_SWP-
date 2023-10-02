@@ -4,10 +4,19 @@
  */
 package com.group4.ejournal.dao;
 
+import java.util.Date;
+
 /**
  *
  * @author Phan Thien
  */
 public class RegistrationDTO {
-    
+    private String FullName;
+    private String Address;
+    private String Phone;
+    private String UserName;
+    private String Password;
+    private String Email;
+    private Date Brith;
+    private int RoleID;
 }

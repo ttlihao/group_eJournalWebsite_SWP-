@@ -6,23 +6,25 @@ package com.group4.ejournal.filter;
 
 import com.group4.ejournal.dao.PublicationDAO;
 import com.group4.ejournal.dao.PublicationDTO;
-import jakarta.servlet.Filter;
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.FilterConfig;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.annotation.WebFilter;
 
 /**
  *
  * @author huy16
  */
-public class HomeFilter implements Filter {
+@WebFilter(filterName = "Filter", urlPatterns = {"/*"})
+public class Filter implements Filter {
     
     private static final boolean debug = true;
 
@@ -31,13 +33,13 @@ public class HomeFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
     
-    public HomeFilter() {
+    public Filter() {
     }    
     
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("HomeFilter:DoBeforeProcessing");
+            log("Filter:DoBeforeProcessing");
         }
 
         // Write code here to process the request and/or response before
@@ -65,7 +67,7 @@ public class HomeFilter implements Filter {
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("HomeFilter:DoAfterProcessing");
+            log("Filter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -96,16 +98,17 @@ public class HomeFilter implements Filter {
      * @exception IOException if an input/output error occurs
      * @exception ServletException if a servlet error occurs
      */
-    @Override
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
         
         if (debug) {
-            log("HomeFilter:doFilter()");
+            log("Filter:doFilter()");
         }
         
         doBeforeProcessing(request, response);
+        
+        Throwable problem = null;
         try {
             List<PublicationDTO> getListPublication = PublicationDAO.getListPublication();
             request.setAttribute("GET_PUBLICATION", getListPublication);
@@ -162,7 +165,7 @@ public class HomeFilter implements Filter {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
             if (debug) {                
-                log("HomeFilter:Initializing filter");
+                log("Filter:Initializing filter");
             }
         }
     }
@@ -173,9 +176,9 @@ public class HomeFilter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("HomeFilter()");
+            return ("Filter()");
         }
-        StringBuffer sb = new StringBuffer("HomeFilter(");
+        StringBuffer sb = new StringBuffer("Filter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
@@ -230,3 +233,4 @@ public class HomeFilter implements Filter {
     }
     
 }
+

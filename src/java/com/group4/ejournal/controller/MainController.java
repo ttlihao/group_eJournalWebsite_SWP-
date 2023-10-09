@@ -18,15 +18,17 @@ import jakarta.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
 public class MainController extends HttpServlet {
-    private static final String HOME_PAGE="HomePage.jsp";
-    private static final String LOGIN_PAGE="loginPage.jsp";
-    private static final String LOGIN="Login";
-    private static final String LOGIN_CONTROLLER="LoginController";
-    private static final String REGISTRATION_PAGE="RegistrationPage";
-    private static final String REGISTRATION_PAGE_VIEW="RegistrationPage.jsp";
-    private static final String REGISTER="Register";
-    private static final String REGISTER_CONTROLLER="RegistrationController";
-    
+
+
+    private static final String HOME_PAGE = "HomePage.jsp";
+    private static final String LOGIN_PAGE = "LoginPage.jsp";
+    private static final String LOGIN = "Login";
+    private static final String LOGIN_CONTROLLER = "LoginController";
+    private static final String REGISTRATION_PAGE = "RegistrationPage";
+    private static final String REGISTRATION_PAGE_VIEW = "RegistrationPage.jsp";
+    private static final String REGISTER = "Register";
+    private static final String REGISTER_CONTROLLER = "RegistrationController";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -35,17 +37,19 @@ public class MainController extends HttpServlet {
             String action = request.getParameter("action");
             if (action == null) {
                 url = HOME_PAGE;
-            }else if (REGISTRATION_PAGE.equals(action)) {
+            } else if (REGISTRATION_PAGE.equals(action)) {
                 url = REGISTRATION_PAGE_VIEW;
-            }else if (REGISTER.equals(action)) {
+            } else if (REGISTER.equals(action)) {
                 url = REGISTER_CONTROLLER;
+            } else if (LOGIN.equals(action)) {
+                url = LOGIN_CONTROLLER;
             }
         } catch (Exception e) {
             log("Erorr at MainController!" + e.toString());
-        }finally{
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-    
+
                 }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

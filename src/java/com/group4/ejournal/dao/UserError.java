@@ -5,11 +5,6 @@
 package com.group4.ejournal.dao;
 
 import java.sql.Date;
-
-
-
-
-
 /**
  *
  * @author ☢ minhuy ☣

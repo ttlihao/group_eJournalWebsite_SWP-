@@ -3,7 +3,7 @@
     Created on : Oct 2, 2023, 3:56:51 PM
     Author     : Phan Thien
 --%>
-<%@page import="com.group4.ejournal.dao.UserError" %>
+<%@ page import="com.group4.ejournal.dao.UserError" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,7 +17,7 @@
             userError = new UserError();
             }
         %>
-        <form action="MainController" method="post">
+        <form action="MainController" method="POST">
             <label for="userName">User Name:</label>
             <input type="text" id="userName" name="userName" required><br><br>
             <%=userError.getUserNameError()%>
@@ -37,7 +37,7 @@
             <%=userError.getAddressError()%>
             <label for="phone">Phone:</label>
             <input type="text" id="phone" name="phone" required><br><br>
-            <%=userErro.getPhoneError()%>
+            <%=userError.getPhoneError()%>
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required><br><br>
             <%=userError.getEmailError()%>
@@ -50,7 +50,7 @@
                 <option value="2">User</option>
                 <option value="3">Reviewer</option>
             </select><br><br>
-            <%=userError.getRoleIDError%>
+            <%=userError.getRoleIDError()%>
 
             <input type="submit" name="action" value="Register">
             <input type="reset" value="Reset">

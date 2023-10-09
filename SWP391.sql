@@ -65,6 +65,7 @@ CREATE TABLE Submission(
 	PublicationID nvarchar (50) NOT NULL,
 	UserID nvarchar(50) NOT NULL,
 	isApproved bit,
+	Stage int,
 	CONSTRAINT pk_Submission PRIMARY KEY (PublicationID, UserID),
 	FOREIGN KEY (PublicationID) REFERENCES Publication(PublicationID),
 	FOREIGN KEY (UserID) REFERENCES UserAccount(UserID)

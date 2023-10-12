@@ -76,6 +76,106 @@ CREATE TABLE Submission(
 
 
 
+---------------------------------------
+-- added data set
+
+
+-- Insert roles into the Role table
+INSERT INTO Role (RoleID, RoleName) VALUES
+(1, 'Author'),
+(2, 'Customer'),
+(3, 'Editor'),
+(4, 'Reviewer');
+
+-- Create a table of random values
+DECLARE @randomStuff TABLE (
+    [id] INT,
+    [val] VARCHAR(100)
+);
+
+-- Insert some random values into the table
+INSERT INTO @randomStuff ([id], [val])
+VALUES (1, 'Alice'), (2, 'Bob'), (3, 'Charlie'), (4, 'David'), (5, 'Eve');
+
+-- Declare a counter variable
+DECLARE @cnt INT = 1;
+
+-- Loop until 1000 rows are inserted
+WHILE @cnt <= 100
+BEGIN
+    -- Insert a row into UserAccount with random values
+    INSERT INTO UserAccount (
+        UserID,
+        FullName,
+        Address,
+        Phone,
+        UserName,
+        Password,
+        Email,
+        Birth,
+        RoleID
+    )
+    SELECT
+        -- Generate a random UserID with 10 characters
+        SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 10) AS UserID,
+        -- Select a random FullName from @randomStuff
+        (SELECT TOP 1 [val] FROM @randomStuff ORDER BY NEWID()) AS FullName,
+        -- Generate a random Address with 20 characters
+        SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 20) AS Address,
+        -- Generate a random Phone number with 10 digits
+        CAST(ABS(CHECKSUM(NEWID())) % 10000000000 AS VARCHAR(15)) AS Phone,
+        -- Generate a random UserName with 8 characters
+        SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 8) AS UserName,
+        -- Generate a random Password with 8 characters
+        SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 8) AS Password,
+        -- Generate a random Email with the format UserName@domain.com
+        SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 8) + '@' + 
+        SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 8) + '.com' AS Email,
+        -- Generate a random Birth date between 1970-01-01 and 2020-12-31
+        DATEADD(DAY, ABS(CHECKSUM(NEWID())) % 18628, '1970-01-01') AS Birth,
+        -- Select a random RoleID from 1 to 4
+        ABS(CHECKSUM(NEWID())) % 4 + 1 AS RoleID;
+
+    -- Increment the counter variable
+    SET @cnt = @cnt + 1;
+END;
+
+-- Delete data
+Delete from UserAccount
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------------------
+
+
+
+
+
+
+
+
+
+
+
 
 
 

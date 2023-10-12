@@ -4,7 +4,6 @@
     Author     : Phan Thien
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,30 +17,43 @@
 <body>
     <div class="header">
         <div class="logo">
-            <a href="home.html"><img src="images/journal.png" alt="Journal"></a>
+            <a href="HomePage.jsp"><img src="images/logo-science.png" alt="Journal"></a>
             <h2>Journal</h2>
         </div>
         <div class="navlist">
             <div class="myList">
-                <div class="list">
-                    <button id="loginBtn"><a href="LoginPage.jsp">Sign in</a></button>
-                    <button id="signupBtn"><a href="RegistrationPage.jsp">Register</a></button>
+                <div class="account-logo" id="accountBtn">
+                    <i class="fa-solid fa-user" id="accountBtn"></i>
+                </div>
+                <div class="account-popup" id="accountPopup">
+                    <ul>
+                        <li><a href="profileAcc.html">Profile</a></li>
+                        <li><a href="settings.html">Settings</a></li>
+                        <li><a href="RegistrationPage.jsp">Sign Up</a></li>
+                        <li><a href="logout.html">Logout</a></li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+    
     <navbar>
         <li><a href="HomePage.jsp">Home</a></li>
-        <li><a href="OpenAccessPublicationPage.jsp">Subjects</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="science.html">Subjects</a></li>
+        <li><a href="aboutPage.html">About</a></li>
+        <i class="fa-solid fa-magnifying-glass" id="search-icon" class="icon-search"><a href="#"></a></i>    
+        <div id="search-input" class="search-input">
+            <input id="input-text" type="text" placeholder="Enter Search Term">
+            <i class="fa-solid fa-magnifying-glass" id="search-icon-1"><a href="#"></a></i>
+        </div>
     </navbar>
     <content>
         <div class="content">
             <div class="contentText">
                 <h3>SCIENCE HEALTHY</h3>
                 <p> 
-                    A summer scene in India captures how Earth’s warming climate is pushing the limits of human endurance.
-                    Besides straining the body’s ability to cool itself, global warming is fostering the spread of vector
+                    A summer scene in India captures how Earth?s warming climate is pushing the limits of human endurance.
+                    Besides straining the body?s ability to cool itself, global warming is fostering the spread of vector
                     - and waterborne diseases and is perhaps bringing other pathogens out of hiding. 
                     This special issue examines the threats to human health and how they can be mitigated. 
                 </p>
@@ -68,7 +80,7 @@
                 <p>
                     An Innate GPS. Dendritic cells (DCs) migrate over large distances to transport antigen to lymph nodes, but precisely how DCs navigate the way to their destination is unclear. 
                     Alanko et al. identified that the chemokine receptor CCR7 serves as both a sensor and a sink for the chemokine CCL19, a dual function which facilitates accurate DC migration. 
-                    This month’s cover shows a maximum projection image of tracks from a live imaging experiment in which DCs migrate out of a cell reservoir under agarose in response to CCL19.
+                    This month?s cover shows a maximum projection image of tracks from a live imaging experiment in which DCs migrate out of a cell reservoir under agarose in response to CCL19.
                 </p>
                 <a href="#">More</a>
             </div>
@@ -82,7 +94,7 @@
                     Song et al. report on how reinforcement learning outperforms methods using optimal control by permitting the discovery of more robust control responses for unmodeled dynamics. 
                     The policy, which requires minimal training, was deployed on autonomous drones and shown to outrace professional human drone pilots by successfully 
                     completing laps around a gated track with shorter times and with higher peak velocity. 
-                    This month’s cover image is a time-lapse image of the drone autonomously flying through gates on a racetrack.
+                    This month?s cover image is a time-lapse image of the drone autonomously flying through gates on a racetrack.
                 </p>
                 <a href="science.html">More</a>
             </div> 
@@ -136,5 +148,7 @@
             </div>
           </div>
     </footer>
+    <script src="javascript/Account.js"></script>
+    <script src="javascript/search.js"></script>
 </body>
 </html>

@@ -8,10 +8,35 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>RegistrationPage</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://kit.fontawesome.com/ecc3edd98f.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="science.css">
+        <title>SCIENCE</title>
     </head>
     <body>
+         <div class="header">
+        <div class="logo">
+            <a href="home.html"><img src="/images/logo-science.png" alt="Journal"></a>
+            <h2>Journal</h2>
+        </div>
+        <div class="navlist">
+            <div class="myList">
+                <div class="list">
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="science.html">Subjects</a></li>
+                    <li><a href="about.html">About</a></li>
+                </div>
+            </div>
+        </div>
+    </div>
+    <content>
+        <div class="text">
+            <h1>B<span>ecome</span> A<span>n</span> A<span>ccount</span></h1>
+            <p>
+                Welcome back, my journal of science, to another chapter in the exploration of the unknown. 
+            </p>
+        </div>
         <% UserError userError = (UserError) request.getAttribute("USER_ERROR");
         if (userError == null){
             userError = new UserError();
@@ -21,7 +46,7 @@
             <label for="userName">User Name:</label>
             <input type="text" id="userName" name="userName" required><br><br>
             <%=userError.getUserNameError()%>
-            
+
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required><br><br>
             <label>Confirm Password:</label>

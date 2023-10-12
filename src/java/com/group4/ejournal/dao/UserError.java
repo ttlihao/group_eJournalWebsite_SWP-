@@ -21,7 +21,6 @@ public class UserError {
     private String RoleIDError;
     private String confirmError;
     private String error;
-
     public UserError() {
     }
 

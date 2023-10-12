@@ -38,6 +38,8 @@ public class UserError {
         this.error = error;
     }
 
+    
+
     public String getUserIDError() {
         return UserIDError;
     }

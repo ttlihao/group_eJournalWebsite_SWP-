@@ -6,6 +6,7 @@ package com.group4.ejournal.controller;
 
 import com.group4.ejournal.dao.UserDAO;
 import com.group4.ejournal.dao.UserDTO;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,6 +14,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 
 /**
  *
@@ -20,70 +23,58 @@ import jakarta.servlet.http.HttpSession;
  */
 @WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
+private static final long serialVersionUID = 1L;
+    private static String HOMEPAGE = "/HomePage.jsp";
 
-    private static final long serialVersionUID = 1L;
+    private UserDAO dao;
 
-    public LoginController() {
+    public LoginController() throws SQLException, ClassNotFoundException {
         super();
+        dao = new UserDAO();//create new data object to interact with database
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String emailId = request.getParameter("emailId");
-        String password = request.getParameter("password");
-        // To verify whether entered data is printing correctly or not
-        System.out.println("emailId.." + emailId);
-        System.out.println("password.." + password);
-        // Here the business validations goes. As a sample, 
-          // we can check against a hardcoded value or pass 
-          // the values into a database which can be available in local/remote  db
-        // For easier way, let us check against a hardcoded value
-        if (emailId != null && emailId.equalsIgnoreCase("admin@gmail.com") && password != null && password.equalsIgnoreCase("admin")) {
-            // We can redirect the page to a welcome page
-            // Need to pass the values in session in order 
-              // to carry forward that one to next pages
-            HttpSession httpSession = request.getSession();
-            // By setting the variable in session, it can be forwarded
-            httpSession.setAttribute("emailId", emailId);
-            request.getRequestDispatcher("welcome.jsp").forward(request, response);
+        PrintWriter pwOut = response.getWriter();
+        //get input from jsp		
+        String Email = request.getParameter("email");
+        String Password = request.getParameter("psword");
+
+        //Validate Login with input
+        if (dao.validateLogin(Email, Password)) {
+            //create session and store variables
+            UserDTO user = dao.userSession(Email);
+            HttpSession session = request.getSession();
+            session.setAttribute("UserName", user.getUserName());
+            session.setAttribute("Email", Email);
+            //load welcome page with session data
+            RequestDispatcher view = request.getRequestDispatcher(HOMEPAGE);
+            view.forward(request, response);
+
+        } //if input is not stored in database print error message and reload page
+        else {
+            pwOut.print("<p style=\"color:red\">Incorrect Username or Password!</p>");
+            RequestDispatcher view = request.getRequestDispatcher("/index.jsp");
+            view.include(request, response);
+
         }
+
+        pwOut.close();
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

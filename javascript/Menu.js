@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function toggleMenuIcon() {
         if (window.innerWidth <= 768) {
             myList.style.display = 'none';
-            menuIcon.style.display = 'block';
+            menuIcon.style.display = 'flex';
         } else {
-            myList.style.display = 'block';
+            myList.style.display = 'flex';
             menuIcon.style.display = 'none';
         }
     }

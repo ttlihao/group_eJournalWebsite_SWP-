@@ -14,13 +14,16 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  *
- * @author Phan Thien
+ * @author ☢ minhuy ☣
  */
-@WebServlet(name = "RegistrationDAO", urlPatterns = {"/RegistrationDAO"})
+@WebServlet(name = "RegistrationController", urlPatterns = {"/RegistrationController"})
 public class RegistrationController extends HttpServlet {
 
     private static final String ERROR = "RegistrationPage.jsp";

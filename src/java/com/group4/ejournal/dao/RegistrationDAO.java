@@ -16,7 +16,8 @@ import java.sql.SQLException;
  */
 public class RegistrationDAO {
     private static final String CHECK_DUPLICATE="SELECT * FROM UserAccount WHERE UserID=?";
-    private static final String INSERT ="INSERT INTO UserAccount(UserID, FullName, Address, Phone, UserName, Password, Email, Birth, RoleID) VALUES (?,?,?,?,?,?,?,?,?)";
+    private static final String INSERT ="INSERT INTO UserAccount(UserID, FullName, Address, Phone, UserName, Password, Email, Birth, RoleID) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
     
     public boolean checkDuplicate(String UserID) throws SQLException {
         boolean check=false;

@@ -13,27 +13,7 @@
         <script src="https://kit.fontawesome.com/ecc3edd98f.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="science.css">
         <title>SCIENCE</title>
-        <style>body {
-                background-color: #ffffff; /* Set background color to white */
-                color: #000000; /* Set text color to black */
-            }
-
-            .header {
-                background-color: #000000; /* Set header background color to black */
-                color: #ffffff; /* Set header text color to white */
-            }
-
-            .logo img {
-                filter: grayscale(100%); /* Make the logo black and white */
-            }
-
-            .navlist .list li a {
-                color: #ffffff; /* Set navigation link color to white */
-            }
-
-            .text {
-                color: #000000; /* Set text color to black */
-            } </style>
+        
     </head>
     <body>
         <div class="header">
@@ -113,10 +93,10 @@
             <%= emailError %>
             <% } %>
 
-            <label for="birth">Birth Date:</label>
-            <input type="date" id="birth" name="birth" required><br><br>
+            <label for="birth">Birth Date (yyyy-mm-dd):</label>
+            <input type="text" id="birth" name="birth" pattern="\d{4}-\d{2}-\d{2}" required><br><br>
             <% String birthError = userError.getBirthError();
-       if (birthError != null) { %>
+   if (birthError != null) { %>
             <%= birthError %>
             <% } %>
 

@@ -29,6 +29,7 @@
                     <ul>
                         <li><a href="profileAcc.html">Profile</a></li>
                         <li><a href="settings.html">Settings</a></li>
+                        <li><a href="LoginPage.jsp">Login</a></li>
                         <li><a href="RegistrationPage.jsp">Sign Up</a></li>
                         <li><a href="logout.html">Logout</a></li>
                     </ul>

@@ -11,11 +11,12 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <script src="https://kit.fontawesome.com/ecc3edd98f.js" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="science.css">
+        <link rel="stylesheet" href="Style/RegistrationPage.css" />
         <title>SCIENCE</title>
         
     </head>
     <body>
+<<<<<<< Updated upstream
         <div class="header">
             <div class="logo">
                 <a href="home.html"><img src="/images/logo-science.png" alt="Journal"></a>
@@ -28,6 +29,19 @@
                         <li><a href="science.html">Subjects</a></li>
                         <li><a href="about.html">About</a></li>
                     </div>
+=======
+         <div class="header">
+        <div class="logo">
+            <a href="HomePage.jsp"><img src="images/logo-science.png" alt="Journal"></a>
+            <h2>Journal</h2>
+        </div>
+        <div class="navlist">
+            <div class="myList">
+                <div class="list">
+                    <li><a href="HomePage.jsp">Home</a></li>
+                    <li><a href="science.html">Subjects</a></li>
+                    <li><a href="aboutPage.html">About</a></li>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
@@ -39,14 +53,70 @@
                 Welcome back, my journal of science, to another chapter in the exploration of the unknown. 
             </p>
         </div>
+<<<<<<< Updated upstream
 
         <% 
             UserError userError = (UserError) request.getAttribute("USER_ERROR");
             if (userError == null){
                 userError = new UserError();
+=======
+         <div class="signupForm">
+            <div class="signup">
+                <h2>Register</h2>
+            </div>
+                     <% UserError userError = (UserError) request.getAttribute("USER_ERROR");
+        if (userError == null){
+            userError = new UserError();
+>>>>>>> Stashed changes
             }
         %>
 
+        <form action="MainController" method="POST">
+            <div class="inputForm">
+                    <div class="infoForm">
+                        <i class="fa-solid fa-user" style="color: #222d3f;"></i>
+                        <input type="text" id="user" name="userName" required  placeholder="Your UserID" >
+                    </div>
+                    <div class="infoForm">
+                        <i class="fa-solid fa-user" style="color: #222d3f;"></i>
+                        <input type="text" id="user" name="fullName" required placeholder="Your Name">
+                    </div>
+                    <div class="infoForm">
+                        <i class="fa-solid fa-user" style="color: #222d3f;"></i>
+                        <input type="email" id="user" name="email" required placeholder="Your Email">
+                    </div>
+                    <div class="infoForm">
+                        <i class="fa-solid fa-user" style="color: #222d3f;"></i>
+                        <input type="text" id="user" name="address" required placeholder="Your Address">
+                    </div>
+                    <div class="infoForm">
+                        <i class="fa-solid fa-user" style="color: #222d3f;"></i>
+                        <input type="date" id="user" name="birth" required placeholder="Date Of Birth">
+                    </div>
+                    <div class="infoForm">
+                        <i class="fa-solid fa-user" style="color: #222d3f;"></i>
+                        <input type="text" id="user" name="phone" required placeholder="Your Phone">
+                    </div>
+                    <div class="infoForm">
+                        <i class="fa-solid fa-lock" style="color: #222d3f;"></i>
+                        <input type="password" id="pass" name="password" required placeholder="Password">
+                    </div>
+                    <div class="infoForm">
+                        <i class="fa-solid fa-lock" style="color: #222d3f;"></i>
+                        <input type="password" id="pass" name="confirm" required placeholder="Confirm Password">
+                    </div>
+                <button id="signupBtn"><input type="submit" name="action" value="Register"></button>
+                <div class="login-google">
+                    <span>or</span>
+                    <a href="#" ><img src="images/logo-google.png" alt="Google" ></a>
+                </div>
+            </div>
+            <div class="loginLink">
+                <p>Do you already have an account? <a href="LoginPage.jsp" id="login">Login</a></p>
+            </div>
+        </div>
+    </content>
+<!--        </form>
         <form action="MainController" method="POST">
             <label for="userName">User Name:</label>
             <input type="text" id="userName" name="userName" required><br><br>
@@ -112,6 +182,7 @@
 
             <input type="submit" name="action" value="Register">
             <input type="reset" value="Reset">
+<<<<<<< Updated upstream
             <% String generalError = userError.getError();
        if (generalError != null) { %>
             <%= generalError %>
@@ -120,4 +191,9 @@
 
     </content>
 </body>
+=======
+            <%= userError.getError() %>
+        </form>-->
+    </body>
+>>>>>>> Stashed changes
 </html>

@@ -4,12 +4,12 @@
  */
 package com.group4.ejournal.dao;
 
-import java.sql.Date;
 /**
  *
  * @author ☢ minhuy ☣
  */
 public class UserError {
+
     private String UserIDError;
     private String FullNameError;
     private String AddressError;
@@ -21,6 +21,7 @@ public class UserError {
     private String RoleIDError;
     private String confirmError;
     private String error;
+
     public UserError() {
     }
 
@@ -37,8 +38,6 @@ public class UserError {
         this.confirmError = confirmError;
         this.error = error;
     }
-
-    
 
     public String getUserIDError() {
         return UserIDError;
@@ -128,7 +127,4 @@ public class UserError {
         this.error = error;
     }
 
-    
-    
-    
 }

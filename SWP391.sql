@@ -2,6 +2,10 @@
 CREATE DATABASE SWP391;
 USE SWP391;
 
+-- drop the SWP391 database 
+use master;
+drop database SWP391;
+
 -- Create the Role table
 CREATE TABLE Role (
     RoleID INT NOT NULL PRIMARY KEY,
@@ -34,8 +38,21 @@ CREATE TABLE Publication(
 	IsOpenAccess bit,
 	Price float,
 	CoverPage nvarchar,
+	isApproved bit,
     CONSTRAINT pk_Publication PRIMARY KEY (PublicationID),
-    CONSTRAINT fk_Publication_User FOREIGN KEY (UserID) REFERENCES UserAccount(UserID)
+    CONSTRAINT fk_Publication_User FOREIGN KEY (UserID) REFERENCES UserAccount(UserID),
+
+	CONSTRAINT fk_Publication_Submission FOREIGN KEY (isApproved) REFERENCES Submission(isApproved)
+);
+-- Create the Submission table
+CREATE TABLE Submission(
+	PublicationID nvarchar (50) NOT NULL,
+	UserID nvarchar(50) NOT NULL,
+	isApproved bit,
+	Stage int,
+	CONSTRAINT pk_Submission PRIMARY KEY (PublicationID, UserID),
+	FOREIGN KEY (PublicationID) REFERENCES Publication(PublicationID),
+	FOREIGN KEY (UserID) REFERENCES UserAccount(UserID)
 );
 
 
@@ -60,16 +77,7 @@ CREATE TABLE Comment(
 	FOREIGN KEY (UserID) REFERENCES UserAccount(UserID)
 );
 
--- Create the Submission table
-CREATE TABLE Submission(
-	PublicationID nvarchar (50) NOT NULL,
-	UserID nvarchar(50) NOT NULL,
-	isApproved bit,
-	Stage int,
-	CONSTRAINT pk_Submission PRIMARY KEY (PublicationID, UserID),
-	FOREIGN KEY (PublicationID) REFERENCES Publication(PublicationID),
-	FOREIGN KEY (UserID) REFERENCES UserAccount(UserID)
-);
+
 
 
 
@@ -129,8 +137,8 @@ BEGIN
         -- Generate a random Password with 8 characters
         SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 8) AS Password,
         -- Generate a random Email with the format UserName@domain.com
-        SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 8) + '@' + 
-        SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 8) + '.com' AS Email,
+        SUBSTRING(CONVERT(VARCHAR(36), NEWID()), 1, 8) + '@gmail' + 
+        '.com' AS Email,
         -- Generate a random Birth date between 1970-01-01 and 2020-12-31
         DATEADD(DAY, ABS(CHECKSUM(NEWID())) % 18628, '1970-01-01') AS Birth,
         -- Select a random RoleID from 1 to 4
@@ -140,7 +148,9 @@ BEGIN
     SET @cnt = @cnt + 1;
 END;
 
+
 -- Delete data
+Select * from UserAccount
 Delete from UserAccount
 
 

@@ -145,3 +145,5 @@ nbdist/
 
 # End of https://www.toptal.com/developers/gitignore/api/netbeans,maven,intellij
 nbproject/private/private.xml
+nbproject/private/private.properties
+nbproject/private/private.xml

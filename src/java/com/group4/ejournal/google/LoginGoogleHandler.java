@@ -40,6 +40,7 @@ public class LoginGoogleHandler extends HttpServlet {
         System.out.println(user);
     }
 
+    
     public static String getToken(String code) throws ClientProtocolException, IOException {
         // call api to get token
         String response = Request.Post(Constants.GOOGLE_LINK_GET_TOKEN)

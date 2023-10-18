@@ -92,7 +92,6 @@ public class UserGoogleDTO {
     public void setPicture(String picture) {
         this.picture = picture;
     }
-
     @Override
     public String toString() {
         return "UserGoogleDTO{" + "id=" + id + ", email=" + email + ", verified_email=" + verified_email + ", name=" + name + ", given_name=" + given_name + ", family_name=" + family_name + ", picture=" + picture + '}';

@@ -10,6 +10,7 @@ package com.group4.ejournal.google;
  */
 public class Constants {
 
+    
     public static String GOOGLE_CLIENT_ID = "208257574048-p7s2qm46ddhvjapoajn37r6njaafeh4f.apps.googleusercontent.com";
 
     public static String GOOGLE_CLIENT_SECRET = "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";

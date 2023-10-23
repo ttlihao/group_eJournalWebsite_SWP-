@@ -22,6 +22,7 @@ public class PublicationDTO {
     private String CoverPage;
 
     public PublicationDTO() {
+        
     }
 
     public PublicationDTO(String PublicationID, String UserID, String Title, String Overview, Date ReleaseDate, String Category, boolean IsOpenAccess, float Price, String CoverPage) {

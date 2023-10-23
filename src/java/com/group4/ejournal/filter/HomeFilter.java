@@ -23,7 +23,7 @@ import javax.servlet.annotation.WebFilter;
  *
  * @author huy16
  */
-@WebFilter(filterName = "Filter", urlPatterns = {"/*"})
+@WebFilter(filterName = "Filter", urlPatterns = {"HomePage.jsp"})
 public class Filter implements Filter {
     
     private static final boolean debug = true;
@@ -110,7 +110,8 @@ public class Filter implements Filter {
         
         Throwable problem = null;
         try {
-            List<PublicationDTO> getListPublication = PublicationDAO.getListPublication();
+            PublicationDAO ag = new PublicationDAO();
+            List<PublicationDTO> getListPublication = ag.getListPublication("");
             request.setAttribute("GET_PUBLICATION", getListPublication);
             chain.doFilter(request, response);
         } catch (Throwable t) {

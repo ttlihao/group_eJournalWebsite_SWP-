@@ -63,7 +63,8 @@
                 <div class="login-google">
                     <span>or</span>
                                 <a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8080/eJournal-group4/LoginGoogleHandler&response_type=code&client_id=208257574048-p7s2qm46ddhvjapoajn37r6njaafeh4f.apps.googleusercontent.com&approval_prompt=force">
-<img src="images/logo-google.png" alt="Google">Google</a>
+<img src="images/logo-google.png" alt="Google"><img/>
+                                    </a>
                 </div>
                 <div class="registerLink">
                     <p>Don't have an account? <a href="RegistrationPage.jsp" id="signup">Register</a></p>

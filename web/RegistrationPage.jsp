@@ -23,7 +23,7 @@
             <div class="myList">
                 <div class="list">
                     <li><a href="HomePage.jsp">Home</a></li>
-                    <li><a href="science.html">Subjects</a></li>
+                    <li><a href="sciencehealthy.html">Subjects</a></li>
                     <li><a href="aboutPage.html">About</a></li>
 
                 </div>

@@ -19,9 +19,9 @@ import java.util.List;
  */
 public class PublicationDAO {
     private static final String CHECK_DUPLICATE="SELECT * FROM Publication WHERE PublicationID=?";
-    private static final String INSERT ="INSERT INTO UserAccount(PublicationID, UserID, Title, Overview, ReleaseDate, Category, Price, CoverPage) VALUES (?,?,?,?,?,?,?,?)";
-    private static final String SEARCH="SELECT PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage FROM Publication WHERE fullName like ?";
-    
+    private static final String INSERT ="INSERT INTO Publication(PublicationID, UserID, Title, Overview, ReleaseDate, Category, Price, CoverPage) VALUES (?,?,?,?,?,?,?,?)";
+    private static final String GET_PUBLICATION="SELECT * FROM PUBLICATION";
+private static final String SEARCH="SELECT PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage FROM Publication WHERE title like ?";    
     public boolean checkDuplicate(String PublicationID) throws SQLException {
         boolean check=false;
         Connection conn = null;
@@ -113,4 +113,77 @@ public class PublicationDAO {
         }
         return list;
     }
+    
+    public List<PublicationDTO> getListPublication() throws SQLException{
+        List<PublicationDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_PUBLICATION);
+                rs = ptm.executeQuery();
+               
+                while(rs.next()){
+                    String PublicationID= rs.getString("PublicationID");
+                    String Title= rs.getString("Title");
+                    String UserID= rs.getString("UserID");
+                    String Overview= rs.getString("Overview");
+                    Date ReleaseDate= rs.getDate("ReleaseDate");
+                    String Category= rs.getString("Category");
+                    boolean IsOpenAccess= rs.getBoolean("IsOpenAccess");
+                    float Price= rs.getFloat("Price");
+                    String CoverPage= rs.getString("CoverPage");
+                    PublicationDTO pub = new PublicationDTO(PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage);
+                    
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(rs!= null) rs.close();
+            if(ptm!= null) ptm.close();
+            if(conn!= null) conn.close();
+        }
+        return list;
+    }
+    
+    public static PublicationDTO getPublication(String id) throws SQLException {
+        PublicationDTO publication = null;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtil.getConnection();
+            String sql = "SELECT *\n"
+                    + "FROM [dbo].[publication]\n"
+                    + "WHERE [publication_id] = ?";
+            if (conn != null) {
+                ptm = conn.prepareStatement(sql);
+                ptm.setString(1, id);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String PublicationID= rs.getString("PublicationID");
+                    String Title= rs.getString("Title");
+                    String UserID= rs.getString("UserID");
+                    String Overview= rs.getString("Overview");
+                    Date ReleaseDate= rs.getDate("ReleaseDate");
+                    String Category= rs.getString("Category");
+                    boolean IsOpenAccess= rs.getBoolean("IsOpenAccess");
+                    float Price= rs.getFloat("Price");
+                    String CoverPage= rs.getString("CoverPage");
+                    publication = new PublicationDTO(PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage);
+                    
+                }
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }finally{
+            if(rs!= null) rs.close();
+            if(ptm!= null) ptm.close();
+            if(conn!= null) conn.close();
+        }
+        return publication;
+                }
 }

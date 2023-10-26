@@ -38,6 +38,7 @@ public class LoginGoogleHandler extends HttpServlet {
         String accessToken = getToken(code);
         UserGoogleDTO user = getUserInfo(accessToken);
         System.out.println(user);
+               
     }
 
     

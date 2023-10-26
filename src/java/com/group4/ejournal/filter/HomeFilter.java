@@ -4,28 +4,27 @@
  */
 package com.group4.ejournal.filter;
 
+
 import com.group4.ejournal.dao.PublicationDAO;
 import com.group4.ejournal.dao.PublicationDTO;
+import jakarta.servlet.Filter;
+import jakarta.servlet.FilterChain;
+import jakarta.servlet.FilterConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.List;
-import javax.servlet.Filter;
-import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.annotation.WebFilter;
 
 /**
  *
  * @author huy16
  */
-@WebFilter(filterName = "Filter", urlPatterns = {"HomePage.jsp"})
-public class Filter implements Filter {
-    
+public class HomeFilter implements Filter {
+
     private static final boolean debug = true;
 
     // The filter configuration object we are associated with.  If
@@ -33,13 +32,14 @@ public class Filter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
     
-    public Filter() {
-    }    
-    
+
+    public HomeFilter() {
+    }
+
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("Filter:DoBeforeProcessing");
+            log("HomeFilter:DoBeforeProcessing");
         }
 
         // Write code here to process the request and/or response before
@@ -62,12 +62,12 @@ public class Filter implements Filter {
 	    log(buf.toString());
 	}
          */
-    }    
-    
+    }
+
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
             throws IOException, ServletException {
         if (debug) {
-            log("Filter:DoAfterProcessing");
+            log("HomeFilter:DoAfterProcessing");
         }
 
         // Write code here to process the request and/or response after
@@ -101,19 +101,20 @@ public class Filter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
+
         if (debug) {
-            log("Filter:doFilter()");
+            log("HomeFilter:doFilter()");
         }
-        
+
         doBeforeProcessing(request, response);
-        
+
         Throwable problem = null;
         try {
-            PublicationDAO ag = new PublicationDAO();
-            List<PublicationDTO> getListPublication = ag.getListPublication("");
+            PublicationDAO dao = new PublicationDAO();
+            List<PublicationDTO> getListPublication = dao.getListPublication();
             request.setAttribute("GET_PUBLICATION", getListPublication);
             chain.doFilter(request, response);
+            
         } catch (Throwable t) {
             // If an exception is thrown somewhere down the filter chain,
             // we still want to execute our after processing, and then
@@ -121,7 +122,7 @@ public class Filter implements Filter {
             problem = t;
             t.printStackTrace();
         }
-        
+
         doAfterProcessing(request, response);
 
         // If there was a problem, we want to rethrow it if it is
@@ -156,17 +157,17 @@ public class Filter implements Filter {
     /**
      * Destroy method for this filter
      */
-    public void destroy() {        
+    public void destroy() {
     }
 
     /**
      * Init method for this filter
      */
-    public void init(FilterConfig filterConfig) {        
+    public void init(FilterConfig filterConfig) {
         this.filterConfig = filterConfig;
         if (filterConfig != null) {
-            if (debug) {                
-                log("Filter:Initializing filter");
+            if (debug) {
+                log("HomeFilter:Initializing filter");
             }
         }
     }
@@ -177,27 +178,27 @@ public class Filter implements Filter {
     @Override
     public String toString() {
         if (filterConfig == null) {
-            return ("Filter()");
+            return ("HomeFilter()");
         }
-        StringBuffer sb = new StringBuffer("Filter(");
+        StringBuffer sb = new StringBuffer("HomeFilter(");
         sb.append(filterConfig);
         sb.append(")");
         return (sb.toString());
     }
-    
+
     private void sendProcessingError(Throwable t, ServletResponse response) {
-        String stackTrace = getStackTrace(t);        
-        
+        String stackTrace = getStackTrace(t);
+
         if (stackTrace != null && !stackTrace.equals("")) {
             try {
                 response.setContentType("text/html");
                 PrintStream ps = new PrintStream(response.getOutputStream());
-                PrintWriter pw = new PrintWriter(ps);                
+                PrintWriter pw = new PrintWriter(ps);
                 pw.print("<html>\n<head>\n<title>Error</title>\n</head>\n<body>\n"); //NOI18N
 
                 // PENDING! Localize this for next official release
-                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");                
-                pw.print(stackTrace);                
+                pw.print("<h1>The resource did not process correctly</h1>\n<pre>\n");
+                pw.print(stackTrace);
                 pw.print("</pre></body>\n</html>"); //NOI18N
                 pw.close();
                 ps.close();
@@ -214,7 +215,7 @@ public class Filter implements Filter {
             }
         }
     }
-    
+
     public static String getStackTrace(Throwable t) {
         String stackTrace = null;
         try {
@@ -228,10 +229,9 @@ public class Filter implements Filter {
         }
         return stackTrace;
     }
-    
-    public void log(String msg) {
-        filterConfig.getServletContext().log(msg);        
-    }
-    
-}
 
+    public void log(String msg) {
+        filterConfig.getServletContext().log(msg);
+    }
+
+}

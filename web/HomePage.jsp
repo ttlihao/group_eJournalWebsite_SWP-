@@ -40,7 +40,7 @@
     
     <navbar>
         <li><a href="HomePage.jsp">Home</a></li>
-        <li><a href="science.html">Subjects</a></li>
+        <li><a href="sciencehealthy.html">Subjects</a></li>
         <li><a href="aboutPage.html">About</a></li>
         <i class="fa-solid fa-magnifying-glass" id="search-icon" class="icon-search"><a href="#"></a></i>    
         <div id="search-input" class="search-input">
@@ -58,7 +58,7 @@
                     - and waterborne diseases and is perhaps bringing other pathogens out of hiding. 
                     This special issue examines the threats to human health and how they can be mitigated. 
                 </p>
-                <a href="science.html">More</a>
+                <a href="sciencehealthy.html">More</a>
             </div> 
             <img src="images//science-healthy.jpg" alt="">    
         </div>
@@ -71,7 +71,7 @@
                     developed a tungsten oxide coating that can be applied during fabrication to prevent catalyst corrosion and durability loss. 
                     This coating holds promise in development of hydrogen-based industries and may lead to more eco-friendly cities.
                 </p>
-                <a href="science.html">More</a>
+                <a href="sciencehealthy.html">More</a>
             </div>
             <img src="images/science-advances.jpg" alt="">
         </div>
@@ -97,7 +97,7 @@
                     completing laps around a gated track with shorter times and with higher peak velocity. 
                     This month?s cover image is a time-lapse image of the drone autonomously flying through gates on a racetrack.
                 </p>
-                <a href="science.html">More</a>
+                <a href="sciencehealthy.html">More</a>
             </div> 
             <img src="images//science-robotics.jpg" alt="">    
         </div>
@@ -109,7 +109,7 @@
                     Repurposing a multikinase inhibitor approved for cancer therapy suppressed viral replication in cultured epithelial cells. 
                     The image is a colored scanning electron micrograph of cells (blue) infected with SARS-CoV-2 (red).
                 </p>
-                <a href="science.html">More</a>
+                <a href="sciencehealthy.html">More</a>
             </div> 
             <img src="images//science-signaling.jpg" alt="">    
         </div>
@@ -123,7 +123,7 @@
                     CYR61 also promoted polarization of these liver-infiltrating macrophages to an inflammatory, profibrotic phenotype. Antibody-mediated blockade of CYR61 decreased liver inflammation and fibrosis in mouse models of NASH, 
                     illustrating a potential therapeutic strategy to reduce pathological liver remodeling in this setting.
                 </p>
-                <a href="science.html">More</a>
+                <a href="sciencehealthy.html">More</a>
             </div> 
             <img src="images//science-translational.jpg" alt="">    
         </div>

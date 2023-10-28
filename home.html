@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    .navbar {
+      background-color: #4a90e2;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 24px;
+    }
+    .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 18px;
+    }
+
+    /* Custom CSS for styling */
+    .navbar {
+      padding: 15px; /* Adjust padding to your preference */
+    }
+
+    .form-inline {
+      margin-right: 10px; /* Add some space between the search and button */
+    }
+
+    .btn-primary {
+      background-color: #4CAF50; /* Customize button color */
+      border-color: #4CAF50;
+    }
+
+    .btn-primary:hover {
+      background-color: #45a049; /* Adjust hover color */
+      border-color: #45a049;
+    }
+
+    .modal-content {
+      border: none; /* Remove border from the modal content */
+    }
+    
+    .modal-body {
+      padding: 20px; /* Adjust padding to your preference */
+    }
+
+    .modal-footer {
+      border-top: none; /* Remove the top border of the modal footer */
+    }
+    /* Slideshow styles */
+
+    .promo-slide {
+      padding: 60px 0; 
+    }
+    
+    .promo-slide .carousel-item img {
+      width: 100%;
+      height: auto; 
+      max-height: 500px;
+      object-fit: cover;
+    }
+
+    .carousel-indicators li {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .carousel-control-prev, 
+    .carousel-control-next {
+      width: 5%;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 3rem;
+      height: 3rem;
+      color: #007bff;
+    }
+    .carousel-control-prev .carousel-control-prev-icon,
+    .carousel-control-next .carousel-control-next-icon {
+      padding: 15px;
+    }
+    /* Make indicators transparent */
+    .carousel-indicators {
+      bottom: -50px;
+    }
+
+    .carousel-indicators li {
+      background-color: rgba(0,0,0,0.3); 
+    }
+
+    .carousel-indicators .active {
+      background-color: #333;
+    }
+    /* Fade animation */
+    .carousel-item {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    
+    .carousel-item.active {
+      opacity: 1;
+    }
+    /* Style the section */
+    section {
+      padding: 40px 0;
+    }
+
+    /* Style the container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Style the section heading */
+    .section-heading {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Style the content blocks */
+    .content {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Style the headings inside the content blocks */
+    .content h3 {
+      font-size: 18px;
+      color: #333;
+    }
+
+    /* Style the images inside the content blocks */
+    .content img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Style the paragraphs inside the content blocks */
+    .content p {
+      font-size: 16px;
+      color: #555;
+      margin: 15px 0;
+    }
+
+    /* Style the "More" links */
+    .content a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #0056b3;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    /* Hover effect for "More" links */
+    .content a:hover {
+      background-color: #0056b3;
+      color: #ccc;
+    }
+
+    /* Media query for responsiveness */
+    @media (max-width: 768px) {
+      .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+    /* OR */
+    .text-center {
+      text-align: center;
+    }
+
+    /* Style the Register button */
+    #registrationForm button {
+      background-color: #007BFF;
+      color: #fff;
+      border: none;
+    }
+
+    #registrationForm button:hover {
+      background-color: #0056b3;
+    }
+
+    .section-heading {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .content {
+      background-color: #f8f9fa;
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    .content img {
+      max-width: 100%;
+    }
+
+    .content a {
+      color: #007bff;
+    }
+
+    footer {
+      background: #343a40;
+      color: #fff;
+      padding: 20px 0;
+    }
+
+    footer h4 {
+      font-size: 1rem;
+      color: #fff;
+    }
+
+  </style>
+
+  <title>SCIENCE</title>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Science Journal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="science.html">Subjects</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="about.html">About</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Search Section -->
+    <form class="form-inline my-2 my-lg-0 ml-auto">
+      <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
+    <!-- "Submit Your Article" Button -->
+    <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#uploadArticleModal">Submit Your Article</button>
+    <button class="btn btn-secondary ml-2" data-toggle="modal" data-target="#loginModal">Login</button>
+
+  </nav>
+  <!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Google Sign-In Button -->
+        
+        <div class="g-signin2" style="padding-left: 170px; margin: 20px 0;" data-onsuccess="onSignIn"></div>
+        
+        <!-- Or Separator -->
+        <p class="text-center">OR</p>
+        
+        <!-- Registration Form -->
+        <form id="registrationForm">
+          <div class="form-group">
+            <label for="regUsername">Username</label>
+            <input type="text" class="form-control" id="regUsername" placeholder="Enter your username">
+          </div>
+          <div class="form-group">
+            <label for="regPassword">Password</label>
+            <input type="password" class="form-control" id="regPassword" placeholder="Enter your password">
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Login</button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Register</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- Modal for Uploading an Article -->
+  <div class="modal fade" id="uploadArticleModal" tabindex="-1" role="dialog" aria-labelledby="uploadArticleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="uploadArticleModalLabel">Upload Your Article</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Article Upload Form -->
+          <form>
+            <div class="form-group">
+              <label for="articleTitle">Article Title</label>
+              <input type="text" class="form-control" id="articleTitle" placeholder="Enter the title of your article">
+            </div>
+            <div class="form-group">
+              <label for="articleFile">Select File</label>
+              <input type="file" class="form-control-file" id="articleFile">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Upload Article</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Promo Slideshow -->
+
+  <section class="promo-slide">
+    <div class="container">
+
+      <div id="promoSlide" class="carousel slide" data-ride="carousel" data-interval="3000">
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/images/1.jpg" alt="Slide 1">
+          </div>
+          <div class="carousel-item">
+             <img src="/images/2.jpg" alt="Slide 2">
+          </div>
+          <div class="carousel-item">
+             <img src="/images/3.jpg" alt="Slide 3">
+          </div>
+          <div class="carousel-item">
+            <img src="/images/4.jpg" alt="Slide 4">
+         </div>
+         <div class="carousel-item">
+          <img src="/images/5.jpg" alt="Slide 5">
+         </div>
+         <div class="carousel-item">
+            <img src="/images/background.jpg" alt="Slide 6">
+          </div>
+        </div>
+        
+        <!-- Controls -->
+        <a class="carousel-control-prev" href="#promoSlide" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#promoSlide" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+  <!-- Featured Articles Section -->
+
+  <section>
+    <div class="container">
+      <h2 class="section-heading">Featured Articles</h2>
+
+      <div class="row">
+        <div class="col-md-4 mb-lg-4">
+          <div class="content">
+            <h3>SCIENCE</h3>
+            <img src="/images/s2.jpg" alt="" />
+            <button class="btn btn-link" data-toggle="collapse" data-target="#content1">
+              &#9660; Read More
+            </button>
+            <div id="content1" class="collapse">
+              <p>After 17 years underground, a recently molted periodical cicada dries its wings in central Maryland before joining with billions of others to chorus, mate, and lay eggs. Researchers found that during the 2021 Brood X emergence, many species of birds altered their diets to feed on this massive resource pulse, markedly altering the dynamics of forest food webs. See pages 268 and 320.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-lg-4">
+          <div class="content">
+            <h3>SCIENCE IMMUNOLOGY</h3>
+            <img src="/images/si2.jpg" alt="" />
+            <button class="btn btn-link" data-toggle="collapse" data-target="#content2">
+              &#9660; Read More
+            </button>
+            <div id="content2" class="collapse">
+              <p>Guarding the Brain from Infection. The central nervous system (CNS) is shielded from invading pathogens through a combination of barriers and immune surveillance. Kim et al. identified a population of brain-localized macrophages capable of defending against systemic viruses to limit viral propagation in the CNS. This month's cover shows blood vessels (yellow) within the connective membrane covering the brain, known as the dura mater, with the protective macrophages expressing MHCII (magenta) distributed along the venous sinus.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-lg-4">
+          <div class="content">
+            <h3>SCIENCE ROBOTICS</h3>
+            <img src="/images/sr2.jpg" alt="" />
+            <button class="btn btn-link" data-toggle="collapse" data-target="#content3">
+              &#9660; Read More
+            </button>
+            <div id="content3" class="collapse">
+              <p>Special Issue on Assistive and Rehabilitative Robots—a Neuromusculoskeletal Prosthesis for Daily Use by a Transradial Amputee. Ortiz-Catalan et al. report on the clinical implementation of a prosthesis integrated into the radius and ulna bones. The prosthesis device relied on implanted electrodes that provided bidirectional neural communication between the residual limb and the bionic hand, enabling improvements to the quality of life of the amputee in terms of comfort, reduced phantom limb pain, and object manipulation. This month's cover is an image of the amputee using the prosthesis device to hold a coffee mug.</p>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>About</h4>
+          <p>Science journal publishes original research and news across disciplines.</p>
+        </div>
+        <div class="col-md-4">
+          <h4>Navigation</h4>
+          <ul class="list-unstyled">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="science.html">Subjects</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Contact</h4>
+          <ul class="list-unstyled">
+            <li>Email: Vietnguyenthe810@gmail.com</li>
+            <li>Phone: 0327313013</li>
+          </ul>
+        </div>
+      </div>
+      <section class="hero">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-left">
+              <h1 class="display-4">Discover Groundbreaking Science</h1>
+              <p class="lead my-4">Read about the latest research and advances across scientific fields.</p>
+              <a href="science.html" class="btn btn-primary btn-lg">Start Reading</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="row mt-5">
+        <div class="col text-center">
+          <p>&copy; 2023 Science Journal</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID">
+
+  
+</body>
+
+</html>

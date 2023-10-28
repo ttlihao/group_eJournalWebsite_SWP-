@@ -261,83 +261,52 @@
       <input class="form-control" type="text" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-
-    <!-- "Submit Your Article" Button -->
-    <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#uploadArticleModal">Submit Your Article</button>
+    <!-- Login Button -->
     <button class="btn btn-secondary ml-2" data-toggle="modal" data-target="#loginModal">Login</button>
 
   </nav>
   <!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Login</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <!-- Google Sign-In Button -->
-        
-        <div class="g-signin2" style="padding-left: 170px; margin: 20px 0;" data-onsuccess="onSignIn"></div>
-        
-        <!-- Or Separator -->
-        <p class="text-center">OR</p>
-        
-        <!-- Registration Form -->
-        <form id="registrationForm">
-          <div class="form-group">
-            <label for="regUsername">Username</label>
-            <input type="text" class="form-control" id="regUsername" placeholder="Enter your username">
-          </div>
-          <div class="form-group">
-            <label for="regPassword">Password</label>
-            <input type="password" class="form-control" id="regPassword" placeholder="Enter your password">
-          </div>
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary">Login</button>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Register</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- Modal for Uploading an Article -->
-  <div class="modal fade" id="uploadArticleModal" tabindex="-1" role="dialog" aria-labelledby="uploadArticleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="uploadArticleModalLabel">Upload Your Article</h5>
+          <h5 class="modal-title" id="loginModalLabel" style="text-align: center;">Login</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-          <!-- Article Upload Form -->
-          <form>
+          <!-- Google Sign-In Button -->
+          
+          <div class="g-signin2" style="padding-left: 170px; margin: 20px 0;" data-onsuccess="onSignIn"></div>
+          
+          <!-- Or Separator -->
+          <p class="text-center">OR</p>
+          
+          <!-- Registration Form -->
+          <form id="registrationForm">
             <div class="form-group">
-              <label for="articleTitle">Article Title</label>
-              <input type="text" class="form-control" id="articleTitle" placeholder="Enter the title of your article">
+              <label for="regUsername">Username</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your username">
             </div>
             <div class="form-group">
-              <label for="articleFile">Select File</label>
-              <input type="file" class="form-control-file" id="articleFile">
+              <label for="regPassword">Password</label>
+              <input type="password" class="form-control" id="regPassword" placeholder="Enter your password">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Login</button>
             </div>
           </form>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Upload Article</button>
+          <button type="button" class="btn btn-primary">Register</button>
         </div>
       </div>
     </div>
   </div>
+  
+  <!-- Register Modal -->
 
   <!-- Promo Slideshow -->
 

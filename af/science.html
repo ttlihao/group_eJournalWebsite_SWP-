@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <title>Science Journal</title> 
+  <style>
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }  
+    .navbar {
+      padding: 15px; 
+    }
+    .form-inline {
+      margin-right: 10px;
+    }
+
+    .btn-primary {
+      background-color: #4CAF50; /* Customize button color */
+      border-color: #4CAF50;
+    }
+
+    .btn-primary:hover {
+      background-color: #45a049; /* Adjust hover color */
+      border-color: #45a049;
+    }
+
+    h1, h2, h3 {
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 60px;
+    }
+
+    h2 {
+      font-size: 36px;
+    }
+
+    h3 {
+      font-size: 20px;
+      color: var(--primary);
+    }
+
+    section {
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    section img:hover {
+      transform: scale(1.1);
+    }
+
+    section .list-group-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+    section h3 {
+      margin-top: 0;
+    }
+
+    section img {
+      border-radius: 4px;
+      box-shadow: 0 2px 3px rgba(0,0,0,0.3);
+    } 
+
+    section .list-group {
+      box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+      border-radius: 4px;
+    }
+
+    section .list-group-item {
+      border: none;
+      padding: 10px 15px;
+      border-radius: 0;
+    }
+
+    section .list-group-item:first-child {
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;  
+    }
+
+    section .list-group-item:last-child {
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+
+    section .list-group-item:hover {
+      background: #f8f9fa;
+    }
+
+    /* Navbar */
+
+    .navbar {
+      background-color: #4a90e2;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 24px;
+    }
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 18px;
+        }
+
+    /* Header */
+
+    .jumbotron {
+      border-radius: 0; 
+    }
+    
+    /* Footer */
+    footer {
+      background: #343a40;
+      color: #fff;
+      padding: 20px 0;
+    }
+
+    footer h4 {
+      font-size: 1rem;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Science Journal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="home.html">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="science.html">Subjects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Search Section -->
+      <form class="form-inline my-2 my-lg-0 ml-auto">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+  
+      <!-- "Submit Your Article" Button -->
+      <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#uploadArticleModal">Submit Your Article</button>
+  
+    </nav>
+    
+    <!-- Modal for Uploading an Article -->
+    <div class="modal fade" id="uploadArticleModal" tabindex="-1" role="dialog" aria-labelledby="uploadArticleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="uploadArticleModalLabel">Upload Your Article</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <!-- Article Upload Form -->
+            <form>
+              <div class="form-group">
+                <label for="articleTitle">Article Title</label>
+                <input type="text" class="form-control" id="articleTitle" placeholder="Enter the title of your article">
+              </div>
+              <div class="form-group">
+                <label for="articleFile">Select File</label>
+                <input type="file" class="form-control-file" id="articleFile">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Upload Article</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+
+  <header class="jumbotron jumbotron-fluid bg-info text-white">
+    <div class="container">
+      <h1>Science Journal</h1>
+      <p>Discover the latest research</p>
+    </div>
+  </header>
+
+  <main class="container mt-5">
+    <div class="row">
+      <section class="col-md-4">
+        <img src="/images/science-healthy.jpg" class="img-fluid mb-3" alt="Science Health">
+        <h3>Science</h3>
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action">Article 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 2</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 3</a>
+        </div>
+      </section>
+      <section class="col-md-4">
+        <img src="/images/science-translational.jpg" class="img-fluid mb-3" alt="Science Health">
+        <h3>Science Healthy</h3>
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action">Article 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 2</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 3</a>
+        </div>
+      </section>
+      <section class="col-md-4">
+        <img src="/images/science-signaling.jpg" class="img-fluid mb-3" alt="Science Health">
+        <h3>Science Healthy</h3>
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action">Article 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 2</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 3</a>
+        </div>
+      </section>
+      <section class="col-md-4">
+        <img src="/images/science-immunology.jpg" class="img-fluid mb-3" alt="Science Health">
+        <h3>Science Healthy</h3>
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action">Article 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 2</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 3</a>
+        </div>
+      </section>
+      <section class="col-md-4">
+        <img src="/images/science-advances.jpg" class="img-fluid mb-3" alt="Science Advances">
+        <h3>Science Advances</h3>
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action">Article 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 2</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 3</a>
+        </div>
+      </section>
+
+      <section class="col-md-4">
+        <img src="/images/science-robotics.jpg" class="img-fluid mb-3" alt="Science Robotics">
+        <h3>Science Robotics</h3>
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action">Article 1</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 2</a>
+          <a href="#" class="list-group-item list-group-item-action">Article 3</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <h4>About</h4>
+          <p>Science journal publishes original research and news across disciplines.</p>
+        </div>
+        <div class="col-md-4">
+          <h4>Navigation</h4>
+          <ul class="list-unstyled">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Subjects</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h4>Contact</h4>
+          <ul class="list-unstyled">
+            <li>Email: info@sciencejournal.com</li>
+            <li>Phone: +1 234 567 890</li>
+          </ul>
+        </div>
+      </div>
+      <section class="hero">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 text-center text-md-left">
+              <h1 class="display-4">Discover Groundbreaking Science</h1>
+              <p class="lead my-4">Read about the latest research and advances across scientific fields.</p>
+              <a href="science.html" class="btn btn-primary btn-lg">Start Reading</a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="row mt-5">
+        <div class="col text-center">
+          <p>&copy; 2023 Science Journal</p>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

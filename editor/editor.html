@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+
+        .content {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .content h3 {
+            font-size: 18px;
+            color: #333;
+        }
+
+        .content p {
+            font-size: 16px;
+            color: #555;
+            margin: 15px 0;
+        }
+
+        .edit-article-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .edit-article-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .user-list-table {
+            width: 100%;
+        }
+
+        .user-list-table th,
+        .user-list-table td {
+            padding: 10px;
+        }
+
+        .article-list-table {
+            width: 100%;
+        }
+
+        .article-list-table th,
+        .article-list-table td {
+            padding: 10px;
+        }
+
+        .edit-form {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+
+    <title>Editor Dashboard</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-heading">Article List</h2>
+                <table class="table table-bordered article-list-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Article Title 1</td>
+                            <td>Author 1</td>
+                            <td>
+                                <button class="btn btn-primary edit-article-btn" data-toggle="modal" data-target="#editArticle1">Accept Article</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Article Title 2</td>
+                            <td>Author 2</td>
+                            <td>
+                                <button class="btn btn-primary edit-article-btn" data-toggle="modal" data-target="#editArticle2">Accept Article</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-heading">User List</h2>
+                <table class="table table-bordered user-list-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>User 1</td>
+                            <td>user1@example.com</td>
+                            <td>
+                                <button class="btn btn-danger delete-user-btn" data-toggle="modal" data-target="#deleteUser1">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>User 2</td>
+                            <td>user2@example.com</td>
+                            <td>
+                                <button class="btn btn-danger delete-user-btn" data-toggle="modal" data-target="#deleteUser2">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-heading">Articles to Be Edited</h2>
+                <table class="table table-bordered article-list-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Article Title 3</td>
+                            <td>Author 3</td>
+                            <td>
+                                <button class="btn btn-primary edit-article-btn" data-toggle="modal" data-target="#editArticle3">Edit Article</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Article Title 4</td>
+                            <td>Author 4</td>
+                            <td>
+                                <button class="btn btn-primary edit-article-btn" data-toggle="modal" data-target="#editArticle4">Edit Article</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Article Modals -->
+    <div class="modal fade" id="editArticle1" tabindex="-1" role="dialog" aria-labelledby="editArticle1Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editArticle1Label">Edit Article 1</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="edit-form">
+                        <div class="form-group">
+                            <label for="editedTitle1">Title</label>
+                            <input type="text" class="form-control" id="editedTitle1" placeholder="Edit the title of the article">
+                        </div>
+                        <div class="form-group">
+                            <label for="editedContent1">Content</label>
+                            <textarea class="form-control" id="editedContent1" rows="4" placeholder="Edit the content of the article"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editArticle2" tabindex="-1" role="dialog" aria-labelledby="editArticle2Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editArticle2Label">Edit Article 2</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="edit-form">
+                        <div class="form-group">
+                            <label for="editedTitle2">Title</label>
+                            <input type="text" class="form-control" id="editedTitle2" placeholder="Edit the title of the article">
+                        </div>
+                        <div class="form-group">
+                            <label for="editedContent2">Content</label>
+                            <textarea class="form-control" id="editedContent2" rows="4" placeholder="Edit the content of the article"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editArticle3" tabindex="-1" role="dialog" aria-labelledby="editArticle3Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editArticle3Label">Edit Article 3</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="edit-form">
+                        <div class="form-group">
+                            <label for="editedTitle3">Title</label>
+                            <input type="text" class="form-control" id="editedTitle3" placeholder="Edit the title of the article">
+                        </div>
+                        <div class="form-group">
+                            <label for="editedContent3">Content</label>
+                            <textarea class="form-control" id="editedContent3" rows="4" placeholder="Edit the content of the article"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editArticle4" tabindex="-1" role="dialog" aria-labelledby="editArticle4Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editArticle4Label">Edit Article 4</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="edit-form">
+                        <div class="form-group">
+                            <label for="editedTitle4">Title</label>
+                            <input type="text" class="form-control" id="editedTitle4" placeholder="Edit the title of the article">
+                        </div>
+                        <div class="form-group">
+                            <label for="editedContent4">Content</label>
+                            <textarea class="form-control" id="editedContent4" rows="4" placeholder="Edit the content of the article"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .profile-card {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-image {
+            max-width: 150px;
+            height: auto;
+            border-radius: 50%;
+        }
+
+        .profile-name {
+            font-size: 24px;
+            margin-top: 20px;
+        }
+
+        .profile-email {
+            font-size: 18px;
+            color: #666;
+        }
+
+        .edit-profile-btn {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        .edit-profile-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .avatar-upload input[type="file"] {
+            display: none;
+        }
+
+        .avatar-upload-label {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
+
+    <title>User Profile</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="profile-card text-center">
+                    <label for="avatar-upload" class="avatar-upload">
+                        <input type="file" id="avatar-upload" accept="image/*">
+                        <img src="/images/account-user.jpg" class="profile-image" alt="User Avatar">
+                    </label>
+                    <h2 class="profile-name">John Doe</h2>
+                    <p class="profile-email">johndoe@example.com</p>
+                    <button class="edit-profile-btn" id="edit-profile">Edit Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProfileModalLabel">Edit Profile</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="new-name">Name</label>
+                            <input type="text" id="new-name" class="form-control" value="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="new-email">Email</label>
+                            <input type="email" id="new-email" class="form-control" value="johndoe@example.com">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="save-profile">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // Show edit profile modal
+            $('#edit-profile').click(function () {
+                $('#editProfileModal').modal('show');
+            });
+
+            // Save profile changes
+            $('#save-profile').click(function () {
+                // Update user profile with the new values
+                var newName = $('#new-name').val();
+                var newEmail = $('#new-email').val();
+                $('.profile-name').text(newName);
+                $('.profile-email').text(newEmail);
+
+                // Close the modal
+                $('#editProfileModal').modal('hide');
+            });
+
+            // Handle avatar upload
+            $('#avatar-upload').change(function () {
+                var input = this;
+                var img = $(input).next('img')[0];
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        img.src = e.target.result;
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

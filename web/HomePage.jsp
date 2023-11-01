@@ -40,7 +40,7 @@
     
     <navbar>
         <li><a href="HomePage.jsp">Home</a></li>
-        <li><a href="sciencehealthy.html">Subjects</a></li>
+        <li><a href="science.html">Subjects</a></li>
         <li><a href="aboutPage.html">About</a></li>
         <i class="fa-solid fa-magnifying-glass" id="search-icon" class="icon-search"><a href="#"></a></i>    
         <div id="search-input" class="search-input">
@@ -71,7 +71,7 @@
                     developed a tungsten oxide coating that can be applied during fabrication to prevent catalyst corrosion and durability loss. 
                     This coating holds promise in development of hydrogen-based industries and may lead to more eco-friendly cities.
                 </p>
-                <a href="sciencehealthy.html">More</a>
+                <a href="scienceadvances.html">More</a>
             </div>
             <img src="images/science-advances.jpg" alt="">
         </div>
@@ -83,7 +83,7 @@
                     Alanko et al. identified that the chemokine receptor CCR7 serves as both a sensor and a sink for the chemokine CCL19, a dual function which facilitates accurate DC migration. 
                     This month?s cover shows a maximum projection image of tracks from a live imaging experiment in which DCs migrate out of a cell reservoir under agarose in response to CCL19.
                 </p>
-                <a href="#">More</a>
+                <a href="scienceimmunology.html">More</a>
             </div>
             <img src="images/science-immunology.jpg" alt="">
         </div>
@@ -97,7 +97,7 @@
                     completing laps around a gated track with shorter times and with higher peak velocity. 
                     This month?s cover image is a time-lapse image of the drone autonomously flying through gates on a racetrack.
                 </p>
-                <a href="sciencehealthy.html">More</a>
+                <a href="sciencerobotics.html">More</a>
             </div> 
             <img src="images//science-robotics.jpg" alt="">    
         </div>
@@ -109,7 +109,7 @@
                     Repurposing a multikinase inhibitor approved for cancer therapy suppressed viral replication in cultured epithelial cells. 
                     The image is a colored scanning electron micrograph of cells (blue) infected with SARS-CoV-2 (red).
                 </p>
-                <a href="sciencehealthy.html">More</a>
+                <a href="sciencesignaling.html">More</a>
             </div> 
             <img src="images//science-signaling.jpg" alt="">    
         </div>
@@ -123,7 +123,7 @@
                     CYR61 also promoted polarization of these liver-infiltrating macrophages to an inflammatory, profibrotic phenotype. Antibody-mediated blockade of CYR61 decreased liver inflammation and fibrosis in mouse models of NASH, 
                     illustrating a potential therapeutic strategy to reduce pathological liver remodeling in this setting.
                 </p>
-                <a href="sciencehealthy.html">More</a>
+                <a href="sciencetranslationalmedicine.html">More</a>
             </div> 
             <img src="images//science-translational.jpg" alt="">    
         </div>

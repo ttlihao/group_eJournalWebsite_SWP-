@@ -5,85 +5,357 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://kit.fontawesome.com/ecc3edd98f.js" crossorigin="anonymous"></script>
     <title>SCIENCE</title>
-    <link rel="stylesheet" href="Style/about.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        body {
+        font-family: 'Open Sans', sans-serif;
+        }
+        .navbar {
+          padding: 15px; 
+        }
+        .form-inline {
+          margin-right: 10px;
+        }
+
+        .btn-primary {
+          background-color: #4CAF50; /* Customize button color */
+          border-color: #4CAF50;
+        }
+
+        .btn-primary:hover {
+          background-color: #45a049; /* Adjust hover color */
+          border-color: #45a049;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        .quote {
+            font-size: 24px;
+            font-style: italic;
+            color: #6c757d;
+            padding: 20px;
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+
+        /* Responsive columns */
+        @media (min-width: 768px) {
+            .content-column {
+                flex: 0 0 50%;
+                max-width: 50%;
+            }
+        }
+
+        /* Styling for Navbar */
+        .navbar {
+            background-color: #4a90e2;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-size: 24px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        /* Styling for Page Header */
+        .jumbotron {
+            background-image: url('images/2.jpg');
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        /* Styling for About Section */
+        .content-column {
+            background: #f7f7f7;
+            padding: 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        /* Styling for Quote Section */
+        .quote {
+            background: #e4e4e4;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        /* Styling for Join Section */
+        .join-section {
+            background: #4a90e2;
+            color: #fff;
+            text-align: center;
+            padding: 60px 0;
+        }
+
+        /* Styling for Footer */
+        footer {
+            background: #343a40;
+            color: #fff;
+            padding: 20px 0;
+        }
+
+        footer h4 {
+            font-size: 1rem;
+            color: #fff;
+        }
+
+    </style>
 </head>
 <body>
-    <div class="header">
-        <div class="logo">
-            <a href="HomePage.jsp"><img src="images/journal.png" alt="Journal"></a>
-            <h2>Journal</h2>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Science Journal</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="HomePage.jsp">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="science.html">Subjects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="aboutPage.html">About</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Search Section -->
+      <form class="form-inline my-2 my-lg-0 ml-auto">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+      <!-- "Submit Your Article" Button -->
+      <button class="btn btn-secondary ml-2" data-toggle="modal" data-target="#loginModal">Login</button>
+
+    </nav>
+    <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="text-center modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-        <div class="navlist">
-            <div class="myList">
-                <div class="list">
-                    <button id="loginBtn"><a href="login.html">Sign in</a></button>
-                    <button id="signupBtn"><a href="signup.html">Register</a></button>
-                </div>
+        <div class="modal-body">
+          <!-- Google Sign-In Button -->
+          
+          <div class="g-signin2" style="padding-left: 170px; margin: 20px 0;" data-onsuccess="onSignIn"></div>
+          
+          <!-- Or Separator -->
+          <p class="text-center">OR</p>
+          
+          <!-- Registration Form -->
+          <form id="registrationForm">
+            <div class="form-group">
+              <label for="regUsername">Username</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+              <label for="regPassword">Password</label>
+              <input type="password" class="form-control" id="regPassword" placeholder="Enter your password">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          <!-- Register Button -->
+          <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#registrationModal">Register</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Registration Modal -->
+  <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="text-center modal-title" id="registrationModalLabel">Register</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Registration Form -->
+          <form id="registrationForm">
+            <div class="form-group">
+              <label for="regUsername">Username</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your username">
+            </div>
+            <div class="form-group">
+              <label for="regUsername">Email</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+              <label for="regUsername">Phone</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your phone number">
+            </div>
+            <div class="form-group">
+              <label for="regUsername">Address</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your address">
+            </div>
+            <div class="form-group">
+              <label for="regPassword">Password</label>
+              <input type="password" class="form-control" id="regPassword" placeholder="Enter your password">
+            </div>
+            <div class="form-group">
+              <label for="regConfirmPassword">Confirm Password</label>
+              <input type="password" class="form-control" id="regConfirmPassword" placeholder="Confirm your password">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Page Header -->
+    <header class="jumbotron">
+        <div class="container">
+            <h1 class="display-4">About Our Journal</h1>
+        </div>
+    </header>
+  
+    <!-- About Section -->
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 content-column">
+                <h2>Our Mission</h2>
+                <p>Our mission is to share the wonders of science, making complex concepts understandable to everyone. We aim to educate and inspire people of all ages, from all walks of life, through engaging and informative content.</p>
+            </div>
+            <div class="col-md-6 content-column">
+                <h2>Our Vision</h2>
+                <p>Our vision is to create a world where science is not just a subject, but a way of life. We strive to make science engaging and accessible for all, fostering a community of lifelong learners who are curious, informed, and passionate about the world of science.</p>  
             </div>
         </div>
     </div>
-    <navbar>
-        <li><a href="HomePage.jsp">Home</a></li>
-        <li><a href="sciencehealthy.html">Subjects</a></li>
-        <li><a href="aboutPage.html">About</a></li>
-    </navbar>
-    <content>
-        <div class="content">
-            <div class="contentText">
-                <h3>Welcome to Our Journal!</h3>
-                <p> 
-                    At Journal, we are dedicated to the art of storytelling. Our mission is to provide a platform where voices from all walks of life can come together to share their unique stories, experiences, and perspectives. 
-                    We believe that through the power of words, we can foster understanding, inspire change, and create a sense of community.
-                </p>
-            </div>
-            <div class="contentText">
-                <h3>Who We Are</h3>
-                <p>
-                    We are a passionate team of writers, editors, and creatives who share a deep love for the written word. Our diverse backgrounds and interests enrich the content you'll find on our website, 
-                    offering a wide range of topics and viewpoints.
-                </p>
-            </div>
-            <div class="contentText">
-                <h3>Our Vision</h3>
-                <p>
-                    Our vision is to be a hub for meaningful and thought-provoking content. We strive to publish articles, essays, and stories that entertain, educate, and spark conversations. Whether it's a personal essay, a deep dive into a social issue,
-                    or a captivating piece of fiction, we aim to captivate our readers and leave a lasting impact.
-                </p>
-            </div>
-            <div class="contentText">
-                <h3>Join Our Community</h3>
-                <p>
-                    We invite you to become a part of our growing community. Whether you're a writer looking to share your work, 
-                    a reader seeking inspiration, or someone who simply enjoys the written word, there's a place for you here. Explore our articles, connect with us on social media, and consider submitting your own work to be featured on our platform.
-                    Thank you for visiting [Your Journal Name]. We hope you find inspiration, insight, and a sense of belonging within our virtual pages. If you have any questions or would like to get in touch, please don't hesitate to contact us.
-                </p>
+</section>
+  <!-- Quote Section -->
+<section>
+    <div class="container">
+        <div class="quote">
+            "Science knows no country, because knowledge belongs to humanity." - Louis Pasteur
+        </div>
+    </div>
+</section>
+
+<!-- Additional Quotes -->
+<section class="bg-light">
+    <div class="container">
+        <div class="quote">
+            "The science of today is the technology of tomorrow." - Edward Teller
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="quote">
+            "Science is organized knowledge. Wisdom is organized life." - Immanuel Kant
+        </div>
+    </div>
+</section>
+
+<section class="bg-light">
+    <div class="container">
+        <div class="quote">
+            "The most beautiful thing we can experience is the mysterious. It is the source of all true art and science." - Albert Einstein
+        </div>
+    </div>
+</section>
+
+    <!-- Quote Section -->
+    <section>
+        <div class="container">
+            <div class="quote">
+                "Science knows no country, because knowledge belongs to humanity." - Louis Pasteur
             </div>
         </div>
-        <div class="contentImg">
-            <img src="images/journal.png" alt="Journal">
-        </div>
-    </content>
+    </section>
+  
+    <!-- Join Section -->
+    <section class="join-section">
+        <div class="container">
+            <h2>Join Our Community</h2>
+            <p>Learn, engage, and share your own science journey with our global community.</p>
+        </div>  
+    </section>
+  
+    <!-- Footer -->
     <footer>
-        &copy; Journal 2023
-        <div class="contact-info">
-            <div class="contact-item">
-              <h4>Phone:</h4>
-              <p>+123456789</p>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-4">
+              <h4>About</h4>
+              <p>Science journal publishes original research and news across disciplines.</p>
             </div>
-            <div class="contact-item">
-              <h4>Contact:</h4>
-              <p>Your Name</p>
+            <div class="col-md-4">
+              <h4>Navigation</h4>
+              <ul class="list-unstyled">
+                <li><a href="HomePage.jsp">Home</a></li>
+                <li><a href="science.html">Subjects</a></li>
+                <li><a href="aboutPage.html">About</a></li>
+              </ul>
             </div>
-            <div class="contact-item">
-              <h4>Email:</h4>
-              <p>your@email.com</p>
-            </div>
-            <div class="contact-item">
-              <h4>Address:</h4>
-              <p>123 Main Street, City, Country</p>
+            <div class="col-md-4">
+              <h4>Contact</h4>
+              <ul class="list-unstyled">
+                <li>Email: Vietnguyenthe810@gmail.com</li>
+                <li>Phone: 0327313013</li>
+              </ul>
             </div>
           </div>
-    </footer>
-    <script src="javascript/about.js"></script>
+          <section class="hero">
+            <div class="container">
+              <div class="row">
+                <div class="col-md-6 text-center text-md-left">
+                  <h1 class="display-4">Discover Groundbreaking Science</h1>
+                  <p class="lead my-4">Read about the latest research and advances across scientific fields.</p>
+                  <a href="science.html" class="btn btn-primary btn-lg">Start Reading</a>
+                </div>
+              </div>
+            </div>
+          </section>
+          <div class="row mt-5">
+            <div class="col text-center">
+              <p>&copy; 2023 Science Journal</p>
+            </div>
+          </div>
+        </div>
+    
+      </footer>
+
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>    
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="YOUR_CLIENT_ID">
+
 </body>
 </html>

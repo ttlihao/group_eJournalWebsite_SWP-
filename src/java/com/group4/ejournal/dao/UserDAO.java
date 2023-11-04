@@ -4,18 +4,19 @@
  */
 package com.group4.ejournal.dao;
 
-import com.group4.ejournal.dbutility.DBUtil;
+import com.group4.ejournal.utilities.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
  * @author Phan Thien
  */
 public class UserDAO {
-    
+
     /*    private static final String LOGIN = "SELECT fullName, roleID FROM tblUsers WHERE userID=? AND password=?";
 
     public UserDTO checkLogin(String email, String password) throws SQLException {
@@ -60,13 +61,12 @@ public class UserDAO {
     } */
     private Connection conn;
 
-    public UserDAO() throws SQLException, ClassNotFoundException {
-        conn = DBUtil.getConnection();
+    public UserDAO() throws SQLException {
     }
 
-    public boolean validateLogin(String Email, String Password) {
+    public boolean validateLogin(String Email, String Password) throws SQLException, ClassNotFoundException {
         boolean canLogin = false;
-
+        conn = DBUtil.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement("select * from UserAccount where Email=? and Password=?");
             ps.setString(1, Email);
@@ -76,13 +76,16 @@ public class UserDAO {
             canLogin = rs.next();
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            conn.close();
         }
 
         return canLogin;
     }
 
-    public UserDTO userSession(String Email) {
+    public UserDTO userSession(String Email) throws SQLException, ClassNotFoundException {
         UserDTO user = new UserDTO();
+        conn = DBUtil.getConnection();
         try {
             PreparedStatement ps = conn.prepareStatement("select * from UserAccount where Email=?");
             ps.setString(1, Email);
@@ -97,7 +100,37 @@ public class UserDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            conn.close();
         }
         return user;
+    }
+
+    public ArrayList<UserDTO> getAllUser() throws SQLException, ClassNotFoundException {
+        ArrayList<UserDTO> listUser = new ArrayList<>();
+        conn = DBUtil.getConnection();
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from UserAccount");
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                UserDTO userAccount = new UserDTO();
+                userAccount.setUserID(rs.getString("UserID"));
+                userAccount.setFullName(rs.getString("FullName"));
+                userAccount.setAddress(rs.getString("Address"));
+                userAccount.setPhone(rs.getString("Phone"));
+                userAccount.setUserName(rs.getString("UserName"));
+                userAccount.setPassword(rs.getString("Password"));
+                userAccount.setEmail(rs.getString("Email"));
+                userAccount.setBirth(rs.getDate("Birth"));
+                userAccount.setRoleID(rs.getInt("RoleID"));
+                listUser.add(userAccount);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            conn.close();
+        }
+        return listUser;
     }
 }

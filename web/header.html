@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+  <!-- Custom CSS -->
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+    }
+    .navbar {
+      background-color: #4a90e2;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 24px;
+    }
+    .navbar-nav .nav-link {
+            color: #fff;
+            font-size: 18px;
+    }
+
+    /* Custom CSS for styling */
+    .navbar {
+      padding: 15px; /* Adjust padding to your preference */
+    }
+
+    .form-inline {
+      margin-right: 10px; /* Add some space between the search and button */
+    }
+
+    .btn-primary {
+      background-color: #4CAF50; /* Customize button color */
+      border-color: #4CAF50;
+    }
+
+    .btn-primary:hover {
+      background-color: #45a049; /* Adjust hover color */
+      border-color: #45a049;
+    }
+    .modal-content {
+      border: none; /* Remove border from the modal content */
+    }
+    
+    .modal-body {
+      padding: 20px; /* Adjust padding to your preference */
+    }
+
+    .modal-footer {
+      border-top: none; /* Remove the top border of the modal footer */
+    }
+    /* Slideshow styles */
+
+    .promo-slide {
+      padding: 60px 0; 
+    }
+    
+    .promo-slide .carousel-item img {
+      width: 100%;
+      height: auto; 
+      max-height: 500px;
+      object-fit: cover;
+    }
+
+    .carousel-indicators li {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .carousel-control-prev, 
+    .carousel-control-next {
+      width: 5%;
+    }
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      width: 3rem;
+      height: 3rem;
+      color: #007bff;
+    }
+    .carousel-control-prev .carousel-control-prev-icon,
+    .carousel-control-next .carousel-control-next-icon {
+      padding: 15px;
+    }
+    /* Make indicators transparent */
+    .carousel-indicators {
+      bottom: -50px;
+    }
+
+    .carousel-indicators li {
+      background-color: rgba(0,0,0,0.3); 
+    }
+
+    .carousel-indicators .active {
+      background-color: #333;
+    }
+    /* Fade animation */
+    .carousel-item {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    
+    .carousel-item.active {
+      opacity: 1;
+    }
+    /* Style the section */
+    section {
+      padding: 40px 0;
+    }
+
+    /* Style the container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Style the section heading */
+    .section-heading {
+      text-align: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    /* Style the content blocks */
+    .content {
+      background-color: #fff;
+      border: 1px solid #e0e0e0;
+      border-radius: 5px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Style the headings inside the content blocks */
+    .content h3 {
+      font-size: 18px;
+      color: #333;
+    }
+
+    /* Style the images inside the content blocks */
+    .content img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Style the paragraphs inside the content blocks */
+    .content p {
+      font-size: 16px;
+      color: #555;
+      margin: 15px 0;
+    }
+
+    /* Style the "More" links */
+    .content a {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #fff;
+      color: #0056b3;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    /* Hover effect for "More" links */
+    .content a:hover {
+      background-color: #0056b3;
+      color: #ccc;
+    }
+
+    /* Media query for responsiveness */
+    @media (max-width: 768px) {
+      .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    /* Style the Register button */
+    #registrationForm button {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+    }
+
+    #registrationForm button:hover {
+      background-color: #45a049;
+    }
+
+    .section-heading {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+
+    .content {
+      background-color: #f8f9fa;
+      padding: 30px;
+      border-radius: 4px;
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    .content img {
+      max-width: 100%;
+    }
+
+    .content a {
+      color: #007bff;
+    }
+
+    footer {
+      background: #343a40;
+      color: #fff;
+      padding: 20px 0;
+    }
+
+    footer h4 {
+      font-size: 1rem;
+      color: #fff;
+    }
+
+  </style>
+
+  <title>SCIENCE</title>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Science Journal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+            <a class="nav-link" href="HomePage.jsp">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="science.jsp">Subjects</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="aboutPage.html">About</a>
+        </li>
+      </ul>
+    </div>
+    <!-- Search Section -->
+    <form class="form-inline my-2 my-lg-0 ml-auto">
+      <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    <!-- Login Button -->
+    <button class="btn btn-secondary ml-2" data-toggle="modal" data-target="#loginModal">Login</button>
+
+  </nav>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="text-center modal-title" id="loginModalLabel">Login</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            
+            
+          <!-- Google Sign-In Button -->
+          
+          <div class="g-signin2" style="padding-left: 170px; margin: 20px 0;" data-onsuccess="onSignIn"></div>
+          
+          <!-- Or Separator -->
+          <p class="text-center">OR</p>
+          
+          <!-- Registration Form -->
+          <form action="MainController" id="registrationForm">
+            <div class="form-group">
+              <label for="regUsername">Username</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your username" name="userName" required="">
+            </div>
+            <div class="form-group">
+              <label for="regPassword">Password</label>
+              <input type="password" class="form-control" id="regPassword" placeholder="Enter your password" name="passWord" required="">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" name="action" value="Login">Login</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+          <!-- Register Button -->
+          <button class="btn btn-primary ml-2" data-toggle="modal" data-target="#registrationModal">Register</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Registration Modal -->
+  <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="registrationModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="text-center modal-title" id="registrationModalLabel">Register</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <!-- Registration Form -->
+          <form id="registrationForm" action="MainController">
+            <div class="form-group">
+              <label for="regUsername">Username</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your username" name="userName">
+            </div>
+              <div class="form-group">
+              <label for="regUsername">FullName</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your Full Name" name="fullName">
+            </div>
+            <div class="form-group">
+              <label for="regUsername">Email</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your email" name="Email">
+            </div>
+            <div class="form-group">
+              <label for="regUsername">Phone</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your phone number" name="Phone">
+            </div>
+            <div class="form-group">
+              <label for="regUsername">Address</label>
+              <input type="text" class="form-control" id="regUsername" placeholder="Enter your address" name="Address">
+            </div>
+              <div class="form-group">
+              <label for="regUsername">Birth</label>
+              <input type="date" class="form-control" id="regUsername" placeholder="Date Of Birth" name="Birth">
+            </div>
+            <div class="form-group">
+              <label for="regPassword">Password</label>
+              <input type="password" class="form-control" id="regPassword" placeholder="Enter your password" name="passWord">
+            </div>
+            <div class="form-group">
+              <label for="regConfirmPassword">Confirm Password</label>
+              <input type="password" class="form-control" id="regConfirmPassword" placeholder="Confirm your password" name="confirmPassWord">
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary" name="action" value="Register">Register</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id" content="YOUR_CLIENT_ID">
+</body>
+</html>

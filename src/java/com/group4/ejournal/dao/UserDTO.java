@@ -18,13 +18,13 @@ public class UserDTO {
     private String UserName;
     private String Password;
     private String Email;
-    private Date Brith;
+    private Date Birth;
     private int RoleID;
 
     public UserDTO() {
     }
 
-    public UserDTO(String userID, String FullName, String Address, String Phone, String UserName, String Password, String Email, Date Brith, int RoleID) {
+    public UserDTO(String userID, String FullName, String Address, String Phone, String UserName, String Password, String Email, Date Birth, int RoleID) {
         this.userID = userID;
         this.FullName = FullName;
         this.Address = Address;
@@ -32,7 +32,7 @@ public class UserDTO {
         this.UserName = UserName;
         this.Password = Password;
         this.Email = Email;
-        this.Brith = Brith;
+        this.Birth = Birth;
         this.RoleID = RoleID;
     }
 
@@ -92,12 +92,12 @@ public class UserDTO {
         this.Email = Email;
     }
 
-    public Date getBrith() {
-        return Brith;
+    public Date getBirth() {
+        return Birth;
     }
 
-    public void setBrith(Date Brith) {
-        this.Brith = Brith;
+    public void setBirth(Date Birth) {
+        this.Birth = Birth;
     }
 
     public int getRoleID() {

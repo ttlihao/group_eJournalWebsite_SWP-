@@ -4,6 +4,7 @@
  */
 package com.group4.ejournal.dao;
 
+import java.io.InputStream;
 import java.util.Date;
 
 /**
@@ -11,103 +12,121 @@ import java.util.Date;
  * @author Phan Thien
  */
 public class PublicationDTO {
-    private String PublicationID;
-    private String UserID;
-    private String Title;
-    private String Overview;
-    private Date ReleaseDate;
-    private String Category;
-    private boolean IsOpenAccess;
-    private float Price;
-    private String CoverPage;
+    private String publicationID;
+    private String userID;
+    private String title;
+    private String overview;
+    private Date releaseDate;
+    private String category;
+    private boolean isOpenAccess;
+    private float price;
+    private byte[] coverPage;
+    private boolean isApproved;
+    private byte[] files;
 
     public PublicationDTO() {
-        
     }
 
-    public PublicationDTO(String PublicationID, String UserID, String Title, String Overview, Date ReleaseDate, String Category, boolean IsOpenAccess, float Price, String CoverPage) {
-        this.PublicationID = PublicationID;
-        this.UserID = UserID;
-        this.Title = Title;
-        this.Overview = Overview;
-        this.ReleaseDate = ReleaseDate;
-        this.Category = Category;
-        this.IsOpenAccess = IsOpenAccess;
-        this.Price = Price;
-        this.CoverPage = CoverPage;
+    public PublicationDTO(String publicationID, String userID, String title, String overview, Date releaseDate, String category, boolean isOpenAccess, float price, byte[] coverPage, boolean isApproved, byte[] files) {
+        this.publicationID = publicationID;
+        this.userID = userID;
+        this.title = title;
+        this.overview = overview;
+        this.releaseDate = releaseDate;
+        this.category = category;
+        this.isOpenAccess = isOpenAccess;
+        this.price = price;
+        this.coverPage = coverPage;
+        this.isApproved = isApproved;
+        this.files = files;
     }
 
+    
     public String getPublicationID() {
-        return PublicationID;
+        return publicationID;
     }
 
-    public void setPublicationID(String PublicationID) {
-        this.PublicationID = PublicationID;
+    public void setPublicationID(String publicationID) {
+        this.publicationID = publicationID;
     }
 
     public String getUserID() {
-        return UserID;
+        return userID;
     }
 
-    public void setUserID(String UserID) {
-        this.UserID = UserID;
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
-    public void setTitle(String Title) {
-        this.Title = Title;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getOverview() {
-        return Overview;
+        return overview;
     }
 
-    public void setOverview(String Overview) {
-        this.Overview = Overview;
+    public void setOverview(String overview) {
+        this.overview = overview;
     }
 
     public Date getReleaseDate() {
-        return ReleaseDate;
+        return releaseDate;
     }
 
-    public void setReleaseDate(Date ReleaseDate) {
-        this.ReleaseDate = ReleaseDate;
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public String getCategory() {
-        return Category;
+        return category;
     }
 
-    public void setCategory(String Category) {
-        this.Category = Category;
+    public void setCategory(String category) {
+        this.category = category;
     }
 
-    public boolean isIsOpenAccess() {
-        return IsOpenAccess;
+    public boolean getIsOpenAccess() {
+        return isOpenAccess;
     }
 
-    public void setIsOpenAccess(boolean IsOpenAccess) {
-        this.IsOpenAccess = IsOpenAccess;
+    public void setIsOpenAccess(boolean isOpenAccess) {
+        this.isOpenAccess = isOpenAccess;
     }
 
     public float getPrice() {
-        return Price;
+        return price;
     }
 
-    public void setPrice(float Price) {
-        this.Price = Price;
+    public void setPrice(float price) {
+        this.price = price;
     }
 
-    public String getCoverPage() {
-        return CoverPage;
+    public byte[] getCoverPage() {
+        return coverPage;
     }
 
-    public void setCoverPage(String CoverPage) {
-        this.CoverPage = CoverPage;
+    public void setCoverPage(byte[] coverPage) {
+        this.coverPage = coverPage;
     }
-    
-    
+
+    public boolean getIsApproved() {
+        return isApproved;
+    }
+
+    public void setIsApproved(boolean isApproved) {
+        this.isApproved = isApproved;
+    }
+
+    public byte[] getFiles() {
+        return files;
+    }
+
+    public void setFiles(byte[] files) {
+        this.files = files;
+    }
 }

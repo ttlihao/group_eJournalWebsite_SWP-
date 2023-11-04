@@ -4,7 +4,7 @@
  */
 package com.group4.ejournal.dao;
 
-import com.group4.ejournal.dbutility.DBUtil;
+import com.group4.ejournal.utilities.DBUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

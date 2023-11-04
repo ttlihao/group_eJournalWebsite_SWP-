@@ -37,35 +37,32 @@ CREATE TABLE Publication(
     Category nvarchar(50),
 	IsOpenAccess bit,
 	Price float,
-	CoverPage nvarchar,
+	CoverPage varbinary(max),
 	isApproved bit,
+	files varbinary(max),
     CONSTRAINT pk_Publication PRIMARY KEY (PublicationID),
-    CONSTRAINT fk_Publication_User FOREIGN KEY (UserID) REFERENCES UserAccount(UserID),
-
-	CONSTRAINT fk_Publication_Submission FOREIGN KEY (isApproved) REFERENCES Submission(isApproved)
-);
--- Create the Submission table
-CREATE TABLE Submission(
-	PublicationID nvarchar (50) NOT NULL,
-	UserID nvarchar(50) NOT NULL,
-	isApproved bit,
-	Stage int,
-	CONSTRAINT pk_Submission PRIMARY KEY (PublicationID, UserID),
-	FOREIGN KEY (PublicationID) REFERENCES Publication(PublicationID),
-	FOREIGN KEY (UserID) REFERENCES UserAccount(UserID)
+    CONSTRAINT fk_Publication_User FOREIGN KEY (UserID) REFERENCES UserAccount(UserID)
 );
 
 
 -- Create the Orders table
 CREATE TABLE Orders (
     OrderID nvarchar(50) NOT NULL PRIMARY KEY,
-    PublicationID nvarchar (50) NOT NULL,
     UserID nvarchar(50) NOT NULL,
     OrderDate DATE,
     TotalPrice DECIMAL(10, 2),
-    FOREIGN KEY (PublicationID) REFERENCES Publication(PublicationID),
     FOREIGN KEY (UserID) REFERENCES UserAccount(UserID)
 );
+CREATE TABLE OrderDetail (
+    OrderID nvarchar(50) NOT NULL,
+    PublicationID nvarchar(50) NOT NULL,
+    Quantity int NOT NULL,
+    Price DECIMAL(10, 2) NOT NULL,
+    PRIMARY KEY (OrderID,PublicationID),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
+	FOREIGN KEY (PublicationID) REFERENCES Publication(PublicationID)
+);
+
 
 
 -- Create the Comment table
@@ -153,6 +150,16 @@ END;
 Select * from UserAccount
 Delete from UserAccount
 
+INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('1', '0FDAFCE8-8', 'Title 1', 'Overview 1', '2023-01-01', 'Category 1', 1, 10.0, NULL, 1, NULL);
+INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('2', '0FDAFCE8-8', 'Title 2', 'Overview 2', '2023-02-01', 'Category 2', 0, 20.0, NULL, 0, NULL);
+INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('3', '0FDAFCE8-8', 'Title 3', 'Overview 3', '2023-03-01', 'Category 3', 1, 30.0, NULL, 1, NULL);
+INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('4', '0FDAFCE8-8', 'Title 4', 'Overview 4', '2023-04-01', 'Category 4', 0, 40.0, NULL, 0, NULL);
+INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('5', '0FDAFCE8-8', 'Title 5', 'Overview 5', '2023-05-01', 'Category 5', 1, 50.0, NULL, 1, NULL);
+INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('6', '0FDAFCE8-8', 'Title 6', 'Overview 6', '2023-06-01', 'Category 6', 0, 60.0, NULL, 0, NULL);
+INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('7', '0FDAFCE8-8', 'Title 7', 'Overview 7', '2023-07-01', 'Category 7', 1, 70.0, NULL, 1, NULL);
+INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('8', '0FDAFCE8-8', 'Title 8', 'Overview 8', '2023-08-01', 'Category 8', 0, 80.0, NULL, 0, NULL);
+INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('9', '0FDAFCE8-8', 'Title 9', 'Overview 9', '2023-09-01', 'Category 9', 1, 90.0, NULL, 1, NULL);
+INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('10', '0FDAFCE8-8', 'Title 10', 'Overview 10', '2023-10-01', 'Category 10', 0, 100.0, NULL, 0, NULL);
 
 
 

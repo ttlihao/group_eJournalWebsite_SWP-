@@ -7,6 +7,7 @@ package com.group4.ejournal.controller;
 import com.group4.ejournal.dao.RegistrationDAO;
 import com.group4.ejournal.dao.RegistrationDTO;
 import com.group4.ejournal.dao.UserError;
+import com.group4.ejournal.utilities.IDUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -18,6 +19,8 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -39,21 +42,20 @@ public class RegistrationController extends HttpServlet {
 
             RegistrationDAO dao = new RegistrationDAO();
             boolean checkValidation = true;
-            String userID = request.getParameter("UserID");
-            String fullName = request.getParameter("FullName");
+            String userID = IDUtil.generateId();
+            String fullName = request.getParameter("fullName");
             String address = request.getParameter("Address");
             String phone = request.getParameter("Phone");
             String userName = request.getParameter("userName");
-            String password = request.getParameter("Password");
+            String password = request.getParameter("passWord");
             String email = request.getParameter("Email");
-            String birth = request.getParameter("Birth");
-            String roleID = request.getParameter("RoleID");
-            String confirm = request.getParameter("confirm");
+            String birthString = request.getParameter("Birth");
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date birth = format.parse(birthString);
 
-            if (userID.length() < 2 || userID.length() > 10) {
-                userError.setUserIDError("UserID must be in [2, 10]");
-                checkValidation = false;
-            }
+            int roleID = 1;
+            String confirm = request.getParameter("confirmPassWord");
+
             boolean checkDuplicate = dao.checkDuplicate(userID);
             if (checkDuplicate) {
                 userError.setUserIDError("UserID already existed!");
@@ -67,12 +69,12 @@ public class RegistrationController extends HttpServlet {
                 userError.setPhoneError("Phone must contain only numbers");
                 checkValidation = false;
             }
-            if (userName.length() < 2 || userName.length() > 20) {
-                userError.setUserNameError("UserName must be in [2, 10]");
+            if (userName.length() < 2) {
+                userError.setUserNameError("UserName must be in larger than 2");
                 checkValidation = false;
             }
             if (!password.equals(confirm)) {
-                userError.setConfirmError("those password does not match!");
+                userError.setConfirmError("Those password does not match!");
                 checkValidation = false;
             }
             String emailPattern = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
@@ -81,8 +83,8 @@ public class RegistrationController extends HttpServlet {
                 userError.setEmailError("Invalid email address");
                 checkValidation = false;
             }
+            java.sql.Date parsedDate = new java.sql.Date(birth.getTime());
             try {
-                java.sql.Date parsedDate = java.sql.Date.valueOf(birth);
                 java.sql.Date currentDate = new java.sql.Date(System.currentTimeMillis());
 
                 if (parsedDate.after(currentDate)) {
@@ -94,22 +96,22 @@ public class RegistrationController extends HttpServlet {
                 checkValidation = false;
             }
             // Role ID Validation
-            try {
-                int roleIDValue = Integer.parseInt(roleID);
-                if (roleIDValue < 1 || roleIDValue > 3) {
-                    userError.setRoleIDError("Role ID must be between 1 and 3");
-                    checkValidation = false;
-                }
-            } catch (NumberFormatException e) {
-                userError.setRoleIDError("Invalid Role ID format");
-                checkValidation = false;
-            }
+//            try {
+//                int roleIDValue = Integer.parseInt(roleID);
+//                if (roleIDValue < 1 || roleIDValue > 3) {
+//                    userError.setRoleIDError("Role ID must be between 1 and 3");
+//                    checkValidation = false;
+//                }
+//            } catch (NumberFormatException e) {
+//                userError.setRoleIDError("Invalid Role ID format");
+//                checkValidation = false;
+//            }
             if (checkValidation) {
-                RegistrationDTO user = new RegistrationDTO();
+                RegistrationDTO user = new RegistrationDTO(userID, fullName, address, phone, userName, password, email, parsedDate, roleID);
                 boolean checkInsert = dao.insert(user);
                 if (checkInsert) {
                     url = SUCCESS;
-                }else{
+                } else {
                     userError.setError("Unknow Error!");
                     request.setAttribute("USER_ERROR", userError);
                 }

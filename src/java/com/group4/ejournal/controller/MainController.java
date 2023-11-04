@@ -21,9 +21,10 @@ public class MainController extends HttpServlet {
 
 
     private static final String HOME_PAGE = "HomePage.jsp";
-    private static final String LOGIN_PAGE = "LoginPage.jsp";
     private static final String LOGIN = "Login";
     private static final String LOGIN_CONTROLLER = "LoginController";
+    private static final String LOGOUT = "Logout";
+    private static final String LOGOUT_CONTROLLER = "LogoutController";
     private static final String REGISTRATION_PAGE = "RegistrationPage";
     private static final String REGISTRATION_PAGE_VIEW = "RegistrationPage.jsp";
     private static final String REGISTER = "Register";
@@ -43,6 +44,8 @@ public class MainController extends HttpServlet {
                 url = REGISTER_CONTROLLER;
             } else if (LOGIN.equals(action)) {
                 url = LOGIN_CONTROLLER;
+            }else if (LOGOUT.equals(action)) {
+                url = LOGOUT_CONTROLLER;
             }
         } catch (Exception e) {
             log("Erorr at MainController!" + e.toString());

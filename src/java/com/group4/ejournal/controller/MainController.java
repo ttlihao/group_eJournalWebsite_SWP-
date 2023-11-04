@@ -29,6 +29,8 @@ public class MainController extends HttpServlet {
     private static final String REGISTRATION_PAGE_VIEW = "RegistrationPage.jsp";
     private static final String REGISTER = "Register";
     private static final String REGISTER_CONTROLLER = "RegistrationController";
+    private static final String SEARCH = "Search";
+    private static final String SEARCH_CONTROLLER = "SearchPublicationController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -47,12 +49,14 @@ public class MainController extends HttpServlet {
             }else if (LOGOUT.equals(action)) {
                 url = LOGOUT_CONTROLLER;
             }
+            else if (SEARCH.equals(action)) {
+                url = SEARCH_CONTROLLER;
+            }
         } catch (Exception e) {
             log("Erorr at MainController!" + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-
                 }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

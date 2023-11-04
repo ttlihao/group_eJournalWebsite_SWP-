@@ -273,12 +273,12 @@
         <!-- Slides -->
         <div class="carousel-inner">
           <div class="carousel-item active">
-              <a href="OpenAccessPublicationPage.jsp">
+              <a href="MainController?PublicID=1&action=Search">
               <img src="images/1.jpg" alt="Slide 1">
               </a>
           </div>
           <div class="carousel-item">
-              <a href="OpenAccessPublicationPage.jsp">
+              <a href="MainController?PublicID=2&action=Search">
              <img src="images/2.jpg" alt="Slide 2">
              </a>
           </div>

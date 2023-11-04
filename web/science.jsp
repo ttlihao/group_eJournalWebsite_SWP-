@@ -36,6 +36,7 @@
     try {
         PublicationDAO dao = new PublicationDAO();
         publications = dao.getListPublication();
+        
     } catch (SQLException e) {
         e.printStackTrace();
     }

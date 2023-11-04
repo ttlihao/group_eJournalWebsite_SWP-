@@ -26,7 +26,7 @@ public class PublicationDAO {
     private static final String CHECK_DUPLICATE = "SELECT * FROM Publication WHERE PublicationID=?";
     private static final String INSERT = "INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String GET_PUBLICATION = "SELECT * FROM PUBLICATION";
-    private static final String SEARCH = "SELECT * WHERE PublicationID=?";
+    private static final String SEARCH = "SELECT * FROM Publication WHERE PublicationID=?";
 
     public boolean checkDuplicate(String PublicationID) throws SQLException {
         boolean check = false;
@@ -140,7 +140,7 @@ public class PublicationDAO {
     }
 
 
-    public static PublicationDTO getPublication(String id) throws SQLException {
+    public PublicationDTO getPublication(String id) throws SQLException {
         PublicationDTO publication = null;
         Connection conn = null;
         PreparedStatement ptm = null;

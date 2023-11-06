@@ -62,6 +62,9 @@
             <p>Menopause ends reproduction around the age of 50 in both humans and wild chimpanzees. Substantial PrR has not been previously observed in any wild primate population, chimpanzees included. One explanation for this discrepancy is that substantial PrR could be a temporary response to unusually favorable ecological conditions at Ngogo, including low levels of predation, high food availability, and successful between-group competition. A second possibility is that substantial PrR is an evolved, species-typical trait in chimpanzees, which has not been observed elsewhere owing to recent negative human impacts, especially disease epidemics. The grandmother hypothesis suggests that older females could evolve to live past their reproductive years to help increase their daughters? fertility or their grandoffsprings? survival. This is unlikely to apply to chimpanzees, whose aged females generally live apart from their daughters, as daughters leave their natal groups at adulthood. In the context of female-biased dispersal, a more relevant theory may be the reproductive conflict hypothesis, which highlights the fact that after migrating into a new group, females become increasingly related to other group members as they age and face competition with younger females for limited breeding opportunities. The oldest females might stop reproducing in order to limit the inclusive fitness costs of that competition. The grandmother and reproductive conflict hypotheses are not mutually exclusive alternatives, and both may be required to explain why all human societies have higher PrR than documented here for chimpanzees.</p>
         </article>
       </div>
-            <%@ include file="footer.jsp" %>
+            </div>
+            </main>
+       <%@ include file="footer.jsp" %>     
 </body>
+
 </html>

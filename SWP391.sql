@@ -162,7 +162,7 @@ INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Ca
 INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES ('10', '0FDAFCE8-8', 'Title 10', 'Overview 10', '2023-10-01', 'Category 10', 0, 100.0, NULL, 0, NULL);
 
 
-
+Select * from Publication
 
 
 

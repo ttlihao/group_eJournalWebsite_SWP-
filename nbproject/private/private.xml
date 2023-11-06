@@ -3,11 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/web/OpenAccessPublicationPage.jsp</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/web/UserHeader.jsp</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/web/ReadPublication.jsp</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/web/WEB-INF/web.xml</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/src/java/com/group4/ejournal/dao/RegistrationDAO.java</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/src/java/com/group4/ejournal/dao/PublicationDTO.java</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/src/java/com/group4/ejournal/controller/LoginController.java</file>
             <file>file:/D:/Github/group_eJournalWebsite_SWP-/web/HomePage.jsp</file>
             <file>file:/D:/Github/group_eJournalWebsite_SWP-/web/RegistrationPage.jsp</file>
-            <file>file:/D:/Github/group_eJournalWebsite_SWP-/web/science.jsp</file>
-            <file>file:/D:/Github/group_eJournalWebsite_SWP-/web/OpenAccessPublicationPage.jsp</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/src/java/com/group4/ejournal/utilities/DBUtil.java</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/web/AuthorHeader.jsp</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/web/LoginPage.jsp</file>
             <file>file:/D:/Github/group_eJournalWebsite_SWP-/src/java/com/group4/ejournal/dao/PublicationDAO.java</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/src/java/com/group4/ejournal/controller/LogoutController.java</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/src/java/com/group4/ejournal/controller/MainController.java</file>
+            <file>file:/D:/Github/group_eJournalWebsite_SWP-/src/java/com/group4/ejournal/controller/ReceivePublicationController.java</file>
         </group>
     </open-files>
 </project-private>

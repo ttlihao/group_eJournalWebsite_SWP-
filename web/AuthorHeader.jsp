@@ -1,5 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -156,26 +160,32 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
+          <form action="MainController" method="post"  enctype="multipart/form-data">
         <div class="modal-body">
           <!-- Article Upload Form -->
-          <form>
             <div class="form-group">
-              <label for="articleTitle">Article Title</label>
-              <input type="text" class="form-control" id="articleTitle" placeholder="Enter the title of your article">
+              <label for="articleTitle" >Article Title</label>
+              <input type="text" class="form-control" id="articleTitle" name="title" placeholder="Enter the title of your article">
+            </div>
+              <div class="form-group">
+              <label for="articleFile">Select Cover Page</label>
+              <input type="file" class="form-control-file" id="articleFile" name="coverPage">
             </div>
             <div class="form-group">
-              <label for="articleFile">Select File</label>
-              <input type="file" class="form-control-file" id="articleFile">
+              <label for="articleFile">Select File Journal</label>
+              <input type="file" class="form-control-file" id="articleFile" name="File"> 
             </div>
-          </form>
+          
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Upload Article</button>
+          <button type="submit" class="btn btn-primary" name="action" value="ReceiveFile">Upload Article</button>
         </div>
+              </form>
       </div>
     </div>
   </div>
+
 
       <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>    

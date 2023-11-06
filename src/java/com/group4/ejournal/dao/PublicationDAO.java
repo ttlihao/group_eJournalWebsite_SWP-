@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.http.pool.ConnPool;
 
 /**
  *
@@ -21,13 +22,12 @@ public class PublicationDAO {
 
     public PublicationDAO() {
     }
-    
 
     private static final String CHECK_DUPLICATE = "SELECT * FROM Publication WHERE PublicationID=?";
     private static final String INSERT = "INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String GET_PUBLICATION = "SELECT * FROM PUBLICATION";
     private static final String SEARCH = "SELECT * FROM Publication WHERE PublicationID=?";
-
+    private static final String INSERTPUBLICATION = "INSERT INTO Publication (PublicationID, UserID, Title, Overview, ReleaseDate, Category, IsOpenAccess, Price, CoverPage, isApproved, files) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?,?,?);" ;
     public boolean checkDuplicate(String PublicationID) throws SQLException {
         boolean check = false;
         Connection conn = null;
@@ -139,7 +139,6 @@ public class PublicationDAO {
         return list;
     }
 
-
     public PublicationDTO getPublication(String id) throws SQLException {
         PublicationDTO publication = null;
         Connection conn = null;
@@ -182,4 +181,36 @@ public class PublicationDAO {
         }
         return publication;
     }
+
+    public boolean insertPublication(PublicationDTO publication) throws SQLException, ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        boolean check = false;
+        try {
+            conn = DBUtil.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(INSERTPUBLICATION);
+                ptm.setString(1, publication.getPublicationID());
+                ptm.setString(2, publication.getUserID());
+                ptm.setString(3, publication.getTitle());
+                ptm.setString(4, publication.getOverview());
+                ptm.setDate(5, new java.sql.Date(publication.getReleaseDate().getTime()));
+                ptm.setString(6, publication.getCategory());
+                ptm.setBoolean(7, true);
+                ptm.setFloat(8, publication.getPrice());
+                ptm.setBytes(9, publication.getCoverPage());
+                ptm.setBoolean(10, publication.getIsApproved());
+                ptm.setBytes(11, publication.getFiles());
+                int rowsInserted = ptm.executeUpdate();
+                if (rowsInserted > 0) {
+                    check = true;
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return check;
+    }
+
 }

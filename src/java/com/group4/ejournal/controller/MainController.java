@@ -7,6 +7,7 @@ package com.group4.ejournal.controller;
 import java.io.IOException;
 
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import jakarta.servlet.http.HttpServletResponse;
  * @author Phan Thien
  */
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
+@MultipartConfig
 public class MainController extends HttpServlet {
 
 
@@ -31,6 +33,8 @@ public class MainController extends HttpServlet {
     private static final String REGISTER_CONTROLLER = "RegistrationController";
     private static final String SEARCH = "Search";
     private static final String SEARCH_CONTROLLER = "SearchPublicationController";
+    private static final String RECEIVEFILE = "ReceiveFile";
+    private static final String RECEIVEFILECONTROLLER = "ReceivePublicationController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -51,6 +55,9 @@ public class MainController extends HttpServlet {
             }
             else if (SEARCH.equals(action)) {
                 url = SEARCH_CONTROLLER;
+            }
+            else if (RECEIVEFILE.equals(action)) {
+                url = RECEIVEFILECONTROLLER;
             }
         } catch (Exception e) {
             log("Erorr at MainController!" + e.toString());

@@ -1,5 +1,4 @@
 <%@ page import="com.group4.ejournal.dao.*,java.util.List,java.util.ArrayList,java.sql.SQLException" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <html>

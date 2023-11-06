@@ -273,7 +273,7 @@
         <!-- Slides -->
         <div class="carousel-inner">
           <div class="carousel-item active">
-              <a href="MainController?PublicID=1&action=Search">
+              <a href="/eJournal-group4/MainController?userName=4EB0D9FD%40gmail.com&passWord=1E0B3CC3&action=Login">
               <img src="images/1.jpg" alt="Slide 1">
               </a>
           </div>
@@ -283,19 +283,19 @@
              </a>
           </div>
           <div class="carousel-item"> 
-              <a href="OpenAccessPublicationPage.jsp">
+              <a href="MainController?PublicID=3&action=Search">
              <img src="images/3.jpg" alt="Slide 3"></a>
           </div>
           <div class="carousel-item">
-              <a href="OpenAccessPublicationPage.jsp">
+              <a href="MainController?PublicID=4&action=Search">
             <img src="images/4.jpg" alt="Slide 4"></a>
          </div>
          <div class="carousel-item">
-             <a href="OpenAccessPublicationPage.jsp">
+             <a href="MainController?PublicID=5&action=Search">
           <img src="images/5.jpg" alt="Slide 5"></a>
          </div>
          <div class="carousel-item">
-             <a href="OpenAccessPublicationPage.jsp">
+             <a href="MainController?PublicID=6&action=Search">
                 <img src="images/background.jpg" alt="Slide 6"></a>
           </div>
         </div>
